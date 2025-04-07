@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lakshan Bandara's articles - Buddhist teachings, lifestyle tips, and more">
+    <title>Lakshan Bandara - Buddhism</title>
+    <!-- Favicon link -->
+    <link rel="icon" href="https://iili.io/35Gp7st.jpg" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        header {
+            background: linear-gradient(to right, #6f98e8, #e4e86f);
+            color: black;
+            padding: 0rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            min-height: 20vh;
+            position: relative;
+        }
+
+        header img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-height: 65px;
+            margin-right: 1rem;
+        }
+
+        header h1 {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            background: #1a1c47;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Page title section with animation */
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .page-title h1 {
+            position: relative;
+            display: inline-block;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(to right, #6f98e8, #e4e86f);
+            animation: extend-line 1.5s forwards ease-out;
+        }
+
+        @keyframes extend-line {
+            to {
+                width: 80%;
+            }
+        }
+
+        .page-title p {
+            max-width: 600px;
+            margin: 1rem auto;
+            color: #666;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-up 1s forwards ease-out 0.5s;
+        }
+
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Filter section */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fade-in 1s forwards 0.8s;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: #6f98e8;
+            color: #6f98e8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(#ebb671);
+            color: black;
+            border-color:#ebb671;
+        }
+
+        /* Dhamma Articles Section - Enhanced with animations */
+        .dhamma-articles {
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dhamma-articles::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .dhamma-articles h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            width: 100%;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fade-in 1s forwards 0.5s;
+        }
+
+        .dhamma-articles h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, #6f98e8, #e4e86f);
+            animation: expand-line 1.5s forwards 0.8s ease-in-out;
+        }
+        
+        @keyframes expand-line {
+            to {
+                width: 120px;
+            }
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .article-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fade-up 0.8s forwards;
+            background-color: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-image {
+            display: inline-block; 
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+            width: 100%;
+            position: relative;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-item:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 0 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        
+        .article-item:hover .article-title {
+            color: #6f98e8;
+        }
+        
+        .article-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #545909;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            align-self: center;
+        }
+
+        .read-btn:hover {
+            background-color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Newsletter section */
+        .newsletter {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(to right, rgba(111, 152, 232, 0.1), rgba(228, 232, 111, 0.1));
+            border-radius: 15px;
+            text-align: center;
+            opacity: 0;
+            animation: fade-in 1s forwards 1s;
+        }
+
+        .newsletter h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            color: #666;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 0.8rem 1.5rem;
+            background: #545909;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Fade-in animation */
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Staggered animation for articles */
+        .article-item:nth-child(1) { animation-delay: 0.2s; }
+        .article-item:nth-child(2) { animation-delay: 0.4s; }
+        .article-item:nth-child(3) { animation-delay: 0.6s; }
+        .article-item:nth-child(4) { animation-delay: 0.8s; }
+        .article-item:nth-child(5) { animation-delay: 1.0s; }
+        .article-item:nth-child(6) { animation-delay: 1.2s; }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            width: 100%;
+            min-height: 20vh;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Article highlight effect */
+        @keyframes highlight {
+            0% {
+                box-shadow: 0 0 0 rgba(111, 152, 232, 0);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(111, 152, 232, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 0 rgba(111, 152, 232, 0);
+            }
+        }
+        
+        .article-highlight {
+            animation: highlight 2s infinite;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #545909;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: #333;
+            transform: translateY(-5px);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1200px) {
+            .articles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        header img {
+            max-height: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            header img {
+                margin-bottom: 1rem;
+                max-height: 40px;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .newsletter {
+                padding: 2rem 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .hidden-newsletter {
+            display: none;
+        }
+		.hidden-article {
+		    display: none;
+		}
+		.hidden-img {
+		    display: none;
+		}
+		.hidden-article-excerpt {
+			display: none;
+		}
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://iili.io/35EzAxe.png" alt="Lakshan Bandara Logo">
+        <div>
+            <h1>Lakshan Bandara</h1>
+            <p>"Believe you can and you're halfway there"</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-title">
+            <h1>Dhamma Articles</h1>
+            <p>Ven Kirulapana Dhamma Wijaya Himi</p>
+            <!-- Search Bar -->
+            <input type="text" id="searchInput" placeholder="Search articles..." 
+                   style="padding: 10px 15px; width: 300px; max-width: 100%; border: 1px solid #ccc; border-radius: 25px; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s;">
+        </section>
+
+        <div class="filters">
+            <button class="filter-btn" onclick="window.location.href='index.html'">Latest Articles</button>
+            <button class="filter-btn active" onclick="window.location.href='buddhism.html'">Buddhism</button>
+            <button class="filter-btn" onclick="window.location.href='science&tech.html'">Science & Tech</button>
+            <button class="filter-btn" onclick="window.location.href='knowledge.html'">General Knowledge</button>
+            <button class="filter-btn" onclick="window.location.href='motivation.html'">Movies</button>
+            <button class="filter-btn" onclick="window.location.href='contact me.html'">Contact Me</button>
+        </div>
+
+        <!-- Dhamma Articles Section - Enhanced with animations and text under images -->
+        <section class="dhamma-articles">
+            <h2>Dhamma Articles & Insights</h2>
+            
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-item">
+                    <div class="article-image">
+                        <hidden-img  src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/Ven_Kiribathgoda" alt="Buddha Statue" />
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">අතිපූජ්‍ය කිරිබත්ගොඩ ඤාණානන්ද ස්වාමීන් වහන්සේගේ දහම් ලිපි</h3>
+                        <p class="article-excerpt">Explore the Buddha's guidance for achieving liberation from suffering through right understanding, intention, speech, action, livelihood, effort, mindfulness, and concentration.</p>
+                    </div>
+                    <a href="#" class="read-btn" onclick="window.location.href='buddhism1.html'">Read Articles</a> 
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="article-item">
+                    <div class="article-image">
+                        <hidden-img  src="https://ik.imagekit.io/bcd8ygetu/dhamma-artic" alt="Buddha Teachings" />
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">කිරුළපණ ධම්මවිජය ස්වාමීන් වහන්සේගේ දහම් ලිපි</h3>
+                        <p class="article-excerpt">Discover the fundamental teachings of Buddhism that explain the nature of suffering, its cause, cessation, and the path leading to the end of suffering.</p>
+                    </div>
+                    <a href="#" class="read-btn" onclick="window.location.href='buddhism2.html'">Read Articles</a>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/meditation-monk.jpg?updatedAt=1743903501312" alt="Meditation Practice">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Mindfulness Meditation</h3>
+                        <p class="article-excerpt">Learn the practice of mindfulness meditation as taught in Buddhism, and how it can help cultivate awareness, concentration, and insight in daily life.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 4 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/buddha-statue.jpg?updatedAt=1743903511312" alt="Buddha Meditation">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">The Life of Buddha</h3>
+                        <p class="article-excerpt">Explore the extraordinary journey of Siddhartha Gautama, from his life as a prince to enlightenment under the Bodhi tree and his teachings thereafter.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 5 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/buddhist-temple.jpg?updatedAt=1743903521312" alt="Buddhist Temple">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Buddhist Temples & Sacred Places</h3>
+                        <p class="article-excerpt">Discover the significance and history of important Buddhist temples and pilgrimage sites around the world that carry deep spiritual meaning.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 6 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/zen-garden.jpg?updatedAt=1743903531312" alt="Mindfulness Practice">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Buddhism in Daily Life</h3>
+                        <p class="article-excerpt">Learn how to apply Buddhist principles in everyday situations, cultivating compassion, mindfulness, and wisdom to create a more peaceful life.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter hidden-newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest articles, updates, and spiritual insights delivered directly to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <div class="back-to-top">↑</div>
+
+    <footer>
+        <p>© 2025 Lakshan Bandara. All rights reserved.</p>
+        <p>Follow us on social media for daily inspiration and updates</p>
+		
+        <p class="footer-links">
+            <a href="index6_contact me.html">Contact</a> | 
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms-of-service.html">Terms of Service</a>
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const articleItems = document.querySelectorAll('.article-item');
+
+        searchInput.addEventListener('input', function () {
+            const value = this.value.toLowerCase();
+            articleItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const altText = item.querySelector('img').getAttribute('alt').toLowerCase();
+                if (text.includes(value) || altText.includes(value)) {
+                    item.style.display = 'flex';
+                    // Add highlight effect to matching items
+                    item.classList.add('article-highlight');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('article-highlight');
+                }
+            });
+        });
+        
+        // Remove highlight effect when search is cleared
+        searchInput.addEventListener('blur', function() {
+            if (this.value === '') {
+                articleItems.forEach(item => {
+                    item.classList.remove('article-highlight');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
