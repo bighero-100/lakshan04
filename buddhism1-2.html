@@ -301,39 +301,126 @@
             margin-left: 0.5rem;
         }
 
-        /* Pagination */
+        /* Enhanced Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin: 4rem 0 2rem;
+            padding: 1rem 0;
+        }
+        
         .pagination {
             display: flex;
             justify-content: center;
-            margin-top: 3rem;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
             opacity: 0;
             animation: fade-in 1s forwards 1.2s;
         }
-
+        
+        .pagination::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(111, 152, 232, 0.05), rgba(228, 232, 111, 0.05));
+            border-radius: 50px;
+            z-index: -1;
+        }
+        
         .page-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: 1px solid #ddd;
+            border: 2px solid #eee;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #555;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .page-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+        
         .page-item:hover {
+            transform: scale(1.15);
             border-color: #6f98e8;
             color: #6f98e8;
+            box-shadow: 0 5px 15px rgba(111, 152, 232, 0.3);
+        }
+        
+        .page-item.active {
+            background: linear-gradient(145deg, #6f98e8, #e4e86f);
+            color: red;
+            border: none;
+            box-shadow: 0 5px 15px rgba(111, 152, 232, 0.4);
             transform: scale(1.1);
         }
-
-        .page-item.active {
-            background: linear-gradient(to right, #6f98e8, #e4e86f);
+        
+        .page-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 50px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .page-arrow:hover {
+            transform: translateX(5px);
+            background: linear-gradient(145deg, #6f98e8, #e4e86f);
             color: white;
-            border: none;
+            box-shadow: 0 8px 20px rgba(111, 152, 232, 0.3);
+        }
+        
+        .page-arrow.prev:hover {
+            transform: translateX(-5px);
+        }
+        
+        .page-info {
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fade-in 1s forwards 1.5s;
+        }
+        
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
         }
 
         /* Newsletter section */
@@ -705,13 +792,17 @@
             </div>
         </div>
 		
-		<div class="pagination">
+		<div class="pagination-container">
+        <div class="pagination">
+            <div class="page-arrow prev">←</div>
             <div class="page-item" onclick="window.location.href='buddhism1.html'">1</div>
-            <div class="page-item" onclick="window.location.href='buddhism1-2.html'">2</div>
+            <div class="page-item active" onclick="window.location.href='buddhism1-2.html'">2</div>
             <div class="page-item">3</div>
             <div class="page-item">4</div>
-            <div class="page-item">→</div>
+            <div class="page-item">5</div>
+            <div class="page-arrow next">→</div>
         </div>
+    </div>
 
         <section class="newsletter">
             <h2>Subscribe to Our Newsletter</h2>
@@ -755,6 +846,79 @@
 
 	<!-- Back to top button script -->
 	<script>
+		// Add this to your existing JavaScript or create a new script
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageItems = document.querySelectorAll('.page-item');
+            const prevArrow = document.querySelector('.page-arrow.prev');
+            const nextArrow = document.querySelector('.page-arrow.next');
+            const pageInfo = document.querySelector('.page-info');
+            
+            // Set current page
+            let currentPage = 1;
+            const totalPages = pageItems.length;
+            
+            // Update page info
+            function updatePageInfo() {
+                pageInfo.textContent = `Showing page ${currentPage} of ${totalPages}`;
+            }
+            
+            // Handle page click
+            pageItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    // Remove active class from all items
+                    pageItems.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    item.classList.add('active');
+                    
+                    // Update current page
+                    currentPage = index + 1;
+                    updatePageInfo();
+                    
+                    // Here you would typically load the content for the selected page
+                    // For now, we're just redirecting to the page
+                    if(currentPage === 1) {
+                        window.location.href = 'index.html';
+                    } else {
+                        window.location.href = `page${currentPage}.html`;
+                    }
+                });
+            });
+            
+            // Handle previous arrow click
+            prevArrow.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    pageItems.forEach(p => p.classList.remove('active'));
+                    pageItems[currentPage - 1].classList.add('active');
+                    updatePageInfo();
+                    
+                    // Redirect to previous page
+                    if(currentPage === 1) {
+                        window.location.href = 'index.html';
+                    } else {
+                        window.location.href = `page${currentPage}.html`;
+                    }
+                }
+            });
+            
+            // Handle next arrow click
+            nextArrow.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    pageItems.forEach(p => p.classList.remove('active'));
+                    pageItems[currentPage - 1].classList.add('active');
+                    updatePageInfo();
+                    
+                    // Redirect to next page
+                    window.location.href = `page${currentPage}.html`;
+                }
+            });
+            
+            // Initialize page info
+            updatePageInfo();
+        });
+		
 		// Back to top button functionality
 		const backToTopButton = document.querySelector('.back-to-top');
 		
