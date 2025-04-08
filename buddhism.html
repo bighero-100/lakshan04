@@ -562,221 +562,6 @@
 		.hidden-article-excerpt {
 			display: none;
 		}
-		
-		.poems-section {
-		  width: 100%;
-		  max-width: 1200px;
-		  margin: 0 auto;
-		  padding: 2rem 0;
-		}
-
-		h2 {
-		  text-align: center;
-		  font-size: 2.5rem;
-		  margin-bottom: 2rem;
-		  color: #3a3a3a;
-		  letter-spacing: 1px;
-		  position: relative;
-		  padding-bottom: 1rem;
-		}
-
-		h2:after {
-		  content: "";
-		  position: absolute;
-		  bottom: 0;
-		  left: 50%;
-		  transform: translateX(-50%);
-		  width: 100px;
-		  height: 3px;
-		  background: linear-gradient(90deg, transparent, #8a6d3b, transparent);
-		}
-
-		.carousel-container {
-		  width: 100%;
-		  overflow: hidden;
-		  position: relative;
-		  padding: 3rem 0;
-		}
-
-		.carousel-track {
-		  display: flex;
-		  gap: 2rem;
-		  animation: scroll 60s linear infinite;
-		  width: max-content;
-		}
-
-		.carousel-track:hover {
-		  animation-play-state: paused;
-		}
-
-		@keyframes scroll {
-		  0% {
-			transform: translateX(0);
-		  }
-		  100% {
-			transform: translateX(calc(-250px * 5 - 2rem * 5));
-		  }
-		}
-
-		.poem-card-container {
-		  flex: 0 0 250px;
-		  height: 350px;
-		  perspective: 1000px;
-		}
-
-		.poem-card {
-		  width: 100%;
-		  height: 100%;
-		  position: relative;
-		  transform-style: preserve-3d;
-		  transition: transform 0.8s ease;
-		  cursor: pointer;
-		}
-
-		.poem-card.flipped {
-		  transform: rotateY(180deg);
-		}
-
-		.poem-card-front, .poem-card-back {
-		  position: absolute;
-		  width: 100%;
-		  height: 100%;
-		  backface-visibility: hidden;
-		  border-radius: 12px;
-		  padding: 1.5rem;
-		  display: flex;
-		  flex-direction: column;
-		  justify-content: center;
-		  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-		  background-color: #fff;
-		  overflow: hidden;
-		}
-
-		.poem-card-back {
-		  transform: rotateY(180deg);
-		  overflow-y: auto;
-		  padding: 1.5rem;
-		}
-
-		.poem-card-front::before, .poem-card-back::before {
-		  content: "";
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
-		  z-index: 1;
-		}
-
-		.poem-card-container:hover .poem-card-front,
-		.poem-card-container:hover .poem-card-back {
-		  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 
-					  0 0 30px rgba(138, 109, 59, 0.3);
-		}
-
-		.poem-card-container:hover .poem-card-front::after,
-		.poem-card-container:hover .poem-card-back::after {
-		  content: "";
-		  position: absolute;
-		  inset: 0;
-		  border-radius: 12px;
-		  padding: 2px;
-		  background: linear-gradient(45deg, #c9a96e, #e2d4b7, #8a6d3b);
-		  -webkit-mask: 
-			linear-gradient(#fff 0 0) content-box, 
-			linear-gradient(#fff 0 0);
-		  -webkit-mask-composite: xor;
-		  mask-composite: exclude;
-		  opacity: 1;
-		  animation: borderGlow 2s ease-in-out infinite alternate;
-		}
-
-		@keyframes borderGlow {
-		  0% {
-			opacity: 0.5;
-		  }
-		  100% {
-			opacity: 1;
-		  }
-		}
-
-		.poem-title {
-		  font-size: 1.3rem;
-		  margin-bottom: 1rem;
-		  font-weight: 700;
-		  color: #5d534a;
-		  text-align: center;
-		  position: relative;
-		  z-index: 2;
-		}
-
-		.poem-content {
-		  font-size: 0.95rem;
-		  font-style: italic;
-		  text-align: center;
-		  line-height: 1.8;
-		  margin-bottom: 1rem;
-		  flex: 1;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  position: relative;
-		  z-index: 2;
-		}
-
-		.poem-author {
-		  font-size: 0.9rem;
-		  text-align: right;
-		  color: #8a6d3b;
-		  font-weight: 600;
-		  margin-top: auto;
-		  position: relative;
-		  z-index: 2;
-		}
-
-		.full-poem {
-		  line-height: 1.8;
-		  font-style: italic;
-		  position: relative;
-		  z-index: 2;
-		  text-align: center;
-		  font-size: 0.9rem;
-		}
-
-		.flip-hint {
-		  font-size: 0.8rem;
-		  text-align: center;
-		  color: #8a6d3b;
-		  margin-top: 1rem;
-		  opacity: 0.7;
-		  position: relative;
-		  z-index: 2;
-		}
-
-		.back-btn {
-		  position: absolute;
-		  bottom: 15px;
-		  right: 15px;
-		  background-color: #8a6d3b;
-		  color: #fff;
-		  border: none;
-		  width: 30px;
-		  height: 30px;
-		  border-radius: 50%;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  cursor: pointer;
-		  font-size: 0.8rem;
-		  z-index: 5;
-		  transition: all 0.3s ease;
-		}
-
-		.back-btn:hover {
-		  transform: scale(1.1);
-		  background-color: #6a5229;
-		}
     </style>
 </head>
 <body>
@@ -849,409 +634,65 @@
                     </div>
                     <a href="#" class="read-btn" onclick="window.location.href='buddhism2.html'">Read Articles</a>
                 </div>
+                
+                <!-- Article 3 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/meditation-monk.jpg?updatedAt=1743903501312" alt="Meditation Practice">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Mindfulness Meditation</h3>
+                        <p class="article-excerpt">Learn the practice of mindfulness meditation as taught in Buddhism, and how it can help cultivate awareness, concentration, and insight in daily life.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 4 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/buddha-statue.jpg?updatedAt=1743903511312" alt="Buddha Meditation">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">The Life of Buddha</h3>
+                        <p class="article-excerpt">Explore the extraordinary journey of Siddhartha Gautama, from his life as a prince to enlightenment under the Bodhi tree and his teachings thereafter.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 5 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/buddhist-temple.jpg?updatedAt=1743903521312" alt="Buddhist Temple">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Buddhist Temples & Sacred Places</h3>
+                        <p class="article-excerpt">Discover the significance and history of important Buddhist temples and pilgrimage sites around the world that carry deep spiritual meaning.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
+                
+                <!-- Article 6 -->
+                <div class="article-item hidden-article">
+                    <div class="article-image">
+                        <img src="https://ik.imagekit.io/bcd8ygetu/dhamma-articles/zen-garden.jpg?updatedAt=1743903531312" alt="Mindfulness Practice">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Buddhism in Daily Life</h3>
+                        <p class="article-excerpt">Learn how to apply Buddhist principles in everyday situations, cultivating compassion, mindfulness, and wisdom to create a more peaceful life.</p>
+                    </div>
+                    <a href="#" class="read-btn">Read Article</a>
+                </div>
             </div>
         </section>
-		
-		<section class="poems-section">
-			<h2>Poems Section</h2>
-			<div class="carousel-container">
-			  <div class="carousel-track">
-				<!-- Poem Card 1 -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">යමක වර්ගය</h3>
-					  <div class="poem-content">
-						<p>
-						  මනෝ පුබ්බංගමා ධම්මා – මනෝ සෙට්ඨා මනෝමයා<br>
-						  මනසා චේ පදුට්ඨේන – භාසති වා කරෝති වා<br>
-						  තතෝ නං දුක්ඛමන්වේති – චක්කං‘ව වහතෝ පදං
-						</p>
-					  </div>
-					  <p class="poem-author">- Emily Dickinson</p>
-					  <p class="flip-hint">Click to read</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">සිංහල තේරුම</h3>
-					  <div class="full-poem">
-						<p>
-							ජීවිතයේ හැම දේකටම සිතයි මුල්වෙන්නේ.<br>
-							සිතම තමයි ශ්‍රේෂ්ඨ වෙන්නේ. සිතින්මයි හටගන්නේ,<br>
-							යම් හෙයකින් සිත නරක් කරගෙන යමක් කිව්වොත් හරි යමක් කෙරුවොත් හරි<br>
-							ඒකෙන් ලැබෙන දුක් විපාක ඔහුගේ පස්සෙන් ලුහුබඳිනවා. කරත්තේ බැඳලා ඉන්න ගොනාගේ පස්සෙන් එන රෝදය වගෙයි.
-						</p>
-					  </div>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
 
-				<!-- Poem Card 2 -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">The Road Not Taken</h3>
-					  <div class="poem-content">
-						<p>
-						  Two roads diverged in a wood, and I—<br>
-						  I took the one less traveled by...
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">The Road Not Taken</h3>
-					  <div class="full-poem">
-						<p>
-						  Two roads diverged in a yellow wood,<br>
-						  And sorry I could not travel both<br>
-						  And be one traveler, long I stood<br>
-						  And looked down one as far as I could<br>
-						  To where it bent in the undergrowth;<br><br>
-						  
-						  Then took the other, as just as fair,<br>
-						  And having perhaps the better claim,<br>
-						  Because it was grassy and wanted wear;<br>
-						  Though as for that the passing there<br>
-						  Had worn them really about the same,<br><br>
-						  
-						  And both that morning equally lay<br>
-						  In leaves no step had trodden black.<br>
-						  Oh, I kept the first for another day!<br>
-						  Yet knowing how way leads on to way,<br>
-						  I doubted if I should ever come back.<br><br>
-						  
-						  I shall be telling this with a sigh<br>
-						  Somewhere ages and ages hence:<br>
-						  Two roads diverged in a wood, and I—<br>
-						  I took the one less traveled by,<br>
-						  And that has made all the difference.
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<!-- Poem Card 3 -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Dreams</h3>
-					  <div class="poem-content">
-						<p>
-						  Hold fast to dreams<br>
-						  For if dreams die...
-						</p>
-					  </div>
-					  <p class="poem-author">- Langston Hughes</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Dreams</h3>
-					  <div class="full-poem">
-						<p>
-						  Hold fast to dreams<br>
-						  For if dreams die<br>
-						  Life is a broken-winged bird<br>
-						  That cannot fly.<br><br>
-						  
-						  Hold fast to dreams<br>
-						  For when dreams go<br>
-						  Life is a barren field<br>
-						  Frozen with snow.
-						</p>
-					  </div>
-					  <p class="poem-author">- Langston Hughes</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<!-- Poem Card 4 -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Fire and Ice</h3>
-					  <div class="poem-content">
-						<p>
-						  Some say the world will end in fire,<br>
-						  Some say in ice...
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Fire and Ice</h3>
-					  <div class="full-poem">
-						<p>
-						  Some say the world will end in fire,<br>
-						  Some say in ice.<br>
-						  From what I've tasted of desire<br>
-						  I hold with those who favor fire.<br>
-						  But if it had to perish twice,<br>
-						  I think I know enough of hate<br>
-						  To say that for destruction ice<br>
-						  Is also great<br>
-						  And would suffice.
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<!-- Poem Card 5 -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Invictus</h3>
-					  <div class="poem-content">
-						<p>
-						  I am the master of my fate,<br>
-						  I am the captain of my soul.
-						</p>
-					  </div>
-					  <p class="poem-author">- William Ernest Henley</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Invictus</h3>
-					  <div class="full-poem">
-						<p>
-						  Out of the night that covers me,<br>
-						  Black as the pit from pole to pole,<br>
-						  I thank whatever gods may be<br>
-						  For my unconquerable soul.<br><br>
-						  
-						  In the fell clutch of circumstance<br>
-						  I have not winced nor cried aloud.<br>
-						  Under the bludgeonings of chance<br>
-						  My head is bloody, but unbowed.<br><br>
-						  
-						  Beyond this place of wrath and tears<br>
-						  Looms but the Horror of the shade,<br>
-						  And yet the menace of the years<br>
-						  Finds and shall find me unafraid.<br><br>
-						  
-						  It matters not how strait the gate,<br>
-						  How charged with punishments the scroll,<br>
-						  I am the master of my fate,<br>
-						  I am the captain of my soul.
-						</p>
-					  </div>
-					  <p class="poem-author">- William Ernest Henley</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<!-- Duplicates for continuous scrolling -->
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Hope is the thing with feathers</h3>
-					  <div class="poem-content">
-						<p>
-						  Hope is the thing with feathers<br>
-						  That perches in the soul...
-						</p>
-					  </div>
-					  <p class="poem-author">- Emily Dickinson</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Hope is the thing with feathers</h3>
-					  <div class="full-poem">
-						<p>
-						  Hope is the thing with feathers<br>
-						  That perches in the soul,<br>
-						  And sings the tune without the words,<br>
-						  And never stops at all,<br><br>
-						  
-						  And sweetest in the gale is heard;<br>
-						  And sore must be the storm<br>
-						  That could abash the little bird<br>
-						  That kept so many warm.<br><br>
-						  
-						  I've heard it in the chillest land,<br>
-						  And on the strangest sea;<br>
-						  Yet, never, in extremity,<br>
-						  It asked a crumb of me.
-						</p>
-					  </div>
-					  <p class="poem-author">- Emily Dickinson</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">The Road Not Taken</h3>
-					  <div class="poem-content">
-						<p>
-						  Two roads diverged in a wood, and I—<br>
-						  I took the one less traveled by...
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">The Road Not Taken</h3>
-					  <div class="full-poem">
-						<p>
-						  Two roads diverged in a yellow wood,<br>
-						  And sorry I could not travel both<br>
-						  And be one traveler, long I stood<br>
-						  And looked down one as far as I could<br>
-						  To where it bent in the undergrowth;<br><br>
-						  
-						  Then took the other, as just as fair,<br>
-						  And having perhaps the better claim,<br>
-						  Because it was grassy and wanted wear;<br>
-						  Though as for that the passing there<br>
-						  Had worn them really about the same,<br><br>
-						  
-						  And both that morning equally lay<br>
-						  In leaves no step had trodden black.<br>
-						  Oh, I kept the first for another day!<br>
-						  Yet knowing how way leads on to way,<br>
-						  I doubted if I should ever come back.<br><br>
-						  
-						  I shall be telling this with a sigh<br>
-						  Somewhere ages and ages hence:<br>
-						  Two roads diverged in a wood, and I—<br>
-						  I took the one less traveled by,<br>
-						  And that has made all the difference.
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Dreams</h3>
-					  <div class="poem-content">
-						<p>
-						  Hold fast to dreams<br>
-						  For if dreams die...
-						</p>
-					  </div>
-					  <p class="poem-author">- Langston Hughes</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Dreams</h3>
-					  <div class="full-poem">
-						<p>
-						  Hold fast to dreams<br>
-						  For if dreams die<br>
-						  Life is a broken-winged bird<br>
-						  That cannot fly.<br><br>
-						  
-						  Hold fast to dreams<br>
-						  For when dreams go<br>
-						  Life is a barren field<br>
-						  Frozen with snow.
-						</p>
-					  </div>
-					  <p class="poem-author">- Langston Hughes</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Fire and Ice</h3>
-					  <div class="poem-content">
-						<p>
-						  Some say the world will end in fire,<br>
-						  Some say in ice...
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Fire and Ice</h3>
-					  <div class="full-poem">
-						<p>
-						  Some say the world will end in fire,<br>
-						  Some say in ice.<br>
-						  From what I've tasted of desire<br>
-						  I hold with those who favor fire.<br>
-						  But if it had to perish twice,<br>
-						  I think I know enough of hate<br>
-						  To say that for destruction ice<br>
-						  Is also great<br>
-						  And would suffice.
-						</p>
-					  </div>
-					  <p class="poem-author">- Robert Frost</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-
-				<div class="poem-card-container">
-				  <div class="poem-card">
-					<div class="poem-card-front">
-					  <h3 class="poem-title">Invictus</h3>
-					  <div class="poem-content">
-						<p>
-						  I am the master of my fate,<br>
-						  I am the captain of my soul.
-						</p>
-					  </div>
-					  <p class="poem-author">- William Ernest Henley</p>
-					  <p class="flip-hint">Click to read full poem</p>
-					</div>
-					<div class="poem-card-back">
-					  <h3 class="poem-title">Invictus</h3>
-					  <div class="full-poem">
-						<p>
-						  Out of the night that covers me,<br>
-						  Black as the pit from pole to pole,<br>
-						  I thank whatever gods may be<br>
-						  For my unconquerable soul.<br><br>
-						  
-						  In the fell clutch of circumstance<br>
-						  I have not winced nor cried aloud.<br>
-						  Under the bludgeonings of chance<br>
-						  My head is bloody, but unbowed.<br><br>
-						  
-						  Beyond this place of wrath and tears<br>
-						  Looms but the Horror of the shade,<br>
-						  And yet the menace of the years<br>
-						  Finds and shall find me unafraid.<br><br>
-						  
-						  It matters not how strait the gate,<br>
-						  How charged with punishments the scroll,<br>
-						  I am the master of my fate,<br>
-						  I am the captain of my soul.
-						</p>
-					  </div>
-					  <p class="poem-author">- William Ernest Henley</p>
-					  <button class="back-btn">↩</button>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </section>
+        <section class="newsletter hidden-newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest articles, updates, and spiritual insights delivered directly to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </section>
     </main>
 
     <div class="back-to-top">↑</div>
@@ -1286,28 +727,6 @@
 
     <!-- Scripts -->
     <script>
-		// Add click event to all poem cards
-		const cards = document.querySelectorAll('.poem-card');
-		
-		cards.forEach(card => {
-		  card.addEventListener('click', function() {
-			this.classList.toggle('flipped');
-		  });
-		});
-		
-		// Add click event to back buttons
-		const backButtons = document.querySelectorAll('.back-btn');
-		
-		backButtons.forEach(button => {
-		  button.addEventListener('click', function(e) {
-			e.stopPropagation(); // Prevent the card click event from firing
-			this.closest('.poem-card').classList.remove('flipped');
-		  });
-		});
-    
-    // Pause animation on hover, resume on mouseout
-    const track = document.querySelector('.carousel-track');
-	
         // Back to top button functionality
         const backToTopButton = document.querySelector('.back-to-top');
         
