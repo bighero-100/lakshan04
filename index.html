@@ -205,7 +205,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: #545909;
+            background: #082842;
             color: white;
             padding: 5px 12px;
             border-radius: 20px;
@@ -502,6 +502,25 @@
 		box-shadow: 0 0 5px rgba(0,123,255,0.5);
 		outline: none;
 	  }
+		.article-new-tag {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			background: #ffae00;
+			color: white;
+			padding: 5px 12px;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 500;
+			z-index: 1;
+			animation: pulse 1.5s infinite;
+		}
+
+		@keyframes pulse {
+			0% { transform: scale(1); }
+			50% { transform: scale(1.05); }
+			100% { transform: scale(1); }
+		}
 	  
     </style>
 </head>
@@ -535,20 +554,34 @@
         </div>
 
         <div class="articles-grid">
-            <!-- Article 1 -->
+			<!-- Article 1 -->
+            <div class="article-card">
+                <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/other4/485747275_1011343737759116_7049385952467502726_n.jpg?updatedAt=1744087970824')">
+                    <span class="article-category">Science & Tech Articles</span>
+					 <span class="article-new-tag" data-added="2025-04-08T12:00:00">New</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">2025.04.09</div>
+                    <h3 class="article-title">"ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව"</h3>
+                    <p class="article-excerpt">ලස්සන සකුරා මල් පිපෙන සුන්දර ජපානය යනු, බෞද්ධ සිද්ධස්ථාන බොහොමයක් ඇති රාජ්‍යයකි. ජපානයේ බොහෝ දෙනා විවිධ ආගම් වලට අයත්ව උපන්නද, අවසන ඔවුනගේ ආධ්‍යාත්මික ගමනානත්ය වන්නේ, බෞද්ධාගම යැයි එරට බොහෝ දෙනෙක් විශ්වාස කරන්නකි...</p>
+                    <a href="https://www.lakshan2004.my-board.org/home/other_letters/other4/0_25" class="read-more">Read More</a>
+                </div>
+            </div>
+			
+            <!-- Article 2 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/ce0b595c9b60d06c6f9ec.jpg?updatedAt=1743868829020')">
                     <span class="article-category">Science & Tech Articles</span>
                 </div>
                 <div class="article-content">
-                    <div class="article-date">2025.04.09</div>
+                    <div class="article-date">2025.04.01</div>
                     <h3 class="article-title">''The Current War''</h3>
                     <p class="article-excerpt">මුලින්ම මොකක්ද අපේ විදුලි යුද්ධය එහෙමත් නැතිනම් The Current War කියන්නේ කියන එක ගැන දැනගමු.</p>
                     <a href="https://www.lakshan2004.my-board.org/home/other_letters/other3/00_6" class="read-more">Read More</a>
                 </div>
             </div>
 
-            <!-- Article 2 -->
+            <!-- Article 3 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_22-46-32.jpg?updatedAt=1743849399605')">
                     <span class="article-category">General Knowledge</span>
@@ -561,7 +594,7 @@
                 </div>
             </div>
 
-            <!-- Article 3 -->
+            <!-- Article 4 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-05-41.jpg?updatedAt=1743849377816')">
                     <span class="article-category">General Knowledge</span>
@@ -574,7 +607,7 @@
                 </div>
             </div>
 
-            <!-- Article 4 -->
+            <!-- Article 5 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/man_namaste_hands1.png?updatedAt=1743867652762')">
                     <span class="article-category">Buddhism</span>
@@ -587,7 +620,7 @@
                 </div>
             </div>
 
-            <!-- Article 5 -->
+            <!-- Article 6 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/Mahameunawa%20images/BuddhaStatue.jpg?updatedAt=1743867160478')">
                     <span class="article-category">Buddhism</span>
@@ -600,7 +633,7 @@
                 </div>
             </div>
 
-            <!-- Article 6 -->
+            <!-- Article 7 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-12-37.jpg?updatedAt=1743849376292')">
                     <span class="article-category">General Knowledge</span>
@@ -613,7 +646,7 @@
                 </div>
             </div>
 
-            <!-- Article 7 -->
+            <!-- Article 8 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/Mahameunawa%20images/2015-12-19-Kshana-Sampaththiya.webp?updatedAt=1743867156234')">
                     <span class="article-category">Buddhism</span>
@@ -626,7 +659,7 @@
                 </div>
             </div>
 
-            <!-- Article 8 -->
+            <!-- Article 9 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-25-43.jpg?updatedAt=1743849386677')">
                     <span class="article-category">General Knowledge</span>
@@ -639,10 +672,10 @@
                 </div>
             </div>
 
-            <!-- Article 9 -->
+            <!-- Article 10 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/img_9711.jpg?updatedAt=1743867659904')">
-                    <span class="article-category">Knowledge</span>
+                    <span class="article-category">Buddhism</span>
                 </div>
                 <div class="article-content">
                     <div class="article-date">2024.12.16</div>
@@ -731,6 +764,28 @@
 			  article.style.display = text.includes(value) ? 'block' : 'none';
 			});
 		  });
+		  
+		// Function to check and hide NEW tags older than 72 hours
+		function checkNewTags() {
+			const newTags = document.querySelectorAll('.article-new-tag');
+			
+			newTags.forEach(tag => {
+				const addedTime = new Date(tag.getAttribute('data-added'));
+				const currentTime = new Date();
+				const timeDiff = currentTime - addedTime; // difference in milliseconds
+				const hoursDiff = timeDiff / (1000 * 60 * 60); // convert to hours
+				
+				if (hoursDiff >= 72) { // Changed from 24 to 72 hours
+					tag.style.display = 'none';
+				}
+			});
+		}
+
+		// Run when page loads
+		checkNewTags();
+
+		// Also check periodically (every 5 minutes) in case user stays on the page
+		setInterval(checkNewTags, 300000);
 	</script>
 
 	</body>
