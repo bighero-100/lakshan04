@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024">
     <meta name="description" content="Lakshan Bandara's articles - Buddhist teachings, lifestyle tips, and more">
-    <title>Laksha Bandara - Articles</title>
+    <title>Lakshan Bandara - Articles</title>
     <!-- Favicon link -->
     <link rel="icon" href="https://iili.io/35Gp7st.jpg" type="image/x-icon">
     <style>
@@ -26,10 +26,11 @@
             scroll-behavior: smooth;
             height: 100%;
         }
-
+        
+        /* Updated header with video background */
         header {
-            background: linear-gradient(to right, #6f98e8, #e4e86f);
-            color: black;
+            position: relative;
+            color: white;
             padding: 0rem;
             text-align: center;
             display: flex;
@@ -38,7 +39,30 @@
             flex-wrap: wrap;
             width: 100%;
             min-height: 20vh;
-            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Video background styles */
+        #header-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        /* Add a semi-transparent overlay to ensure text readability */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
         }
 
         header img {
@@ -47,16 +71,22 @@
             left: 0;
             max-height: 65px;
             margin-right: 1rem;
+            z-index: 1;
         }
 
         header h1 {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         header p {
             font-style: italic;
             margin-top: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
         }
 		
         main {
@@ -527,17 +557,26 @@
 <body>
 
     <header>
-        <img src="https://iili.io/35EzAxe.png" alt="Lakshan Bandara Logo">
-        <div>
+        <!-- Video background -->
+        <video id="header-video" autoplay muted loop>
+            <source src="https://ik.imagekit.io/bcd8ygetu/other4/Blue%20White%20Animated%20Business%20Technology%20YouTube%20Video%20Intro%20(3).mp4?updatedAt=1744098305768" type="video/mp4">
+            <!-- Fallback for browsers that don't support video -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Header content -->
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://iili.io/35EzAxe.png" alt="Lakshan Bandara Logo">
+            </div>
             <h1>Lakshan Bandara</h1>
             <p>"Believe you can and you're halfway there"</p>
-			</div>
         </div>
     </header>
 
     <main>
         <section class="page-title">
-            <h1>Niko Articles</h1>
+            <h1>Articles</h1>
             <p>Discover a collection of thought-provoking articles on Buddhism, lifestyle, science, technology, and more. Expand your knowledge and find inspiration.</p>
 			<!-- Search Bar -->
 			  <input type="text" id="searchInput" placeholder="Search articles..." 
@@ -556,20 +595,6 @@
         <div class="articles-grid">
 			<!-- Article 1 -->
             <div class="article-card">
-                <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/other4/485747275_1011343737759116_7049385952467502726_n%20(1)%20(1)%20(1).jpg?updatedAt=1744092089711')">
-                    <span class="article-category">Genaral knowledge</span>
-					 <span class="article-new-tag" data-added="2025-04-08T12:00:00">New</span>
-                </div>
-                <div class="article-content">
-                    <div class="article-date">2025.04.09</div>
-                    <h3 class="article-title">"ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව"</h3>
-                    <p class="article-excerpt">ලස්සන සකුරා මල් පිපෙන සුන්දර ජපානය යනු, බෞද්ධ සිද්ධස්ථාන බොහොමයක් ඇති රාජ්‍යයකි. ජපානයේ බොහෝ දෙනා විවිධ ආගම් වලට අයත්ව උපන්නද, අවසන ඔවුනගේ ආධ්‍යාත්මික ගමනානත්ය වන්නේ, බෞද්ධාගම යැයි එරට බොහෝ දෙනෙක් විශ්වාස කරන්නකි...</p>
-                    <a href="https://www.lakshan2004.my-board.org/home/other_letters/other4/0_25" class="read-more">Read More</a>
-                </div>
-            </div>
-			
-            <!-- Article 2 -->
-            <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/ce0b595c9b60d06c6f9ec.jpg?updatedAt=1743868829020')">
                     <span class="article-category">Science & Tech Articles</span>
                 </div>
@@ -578,6 +603,20 @@
                     <h3 class="article-title">''The Current War''</h3>
                     <p class="article-excerpt">මුලින්ම මොකක්ද අපේ විදුලි යුද්ධය එහෙමත් නැතිනම් The Current War කියන්නේ කියන එක ගැන දැනගමු.</p>
                     <a href="https://www.lakshan2004.my-board.org/home/other_letters/other3/00_6" class="read-more">Read More</a>
+                </div>
+            </div>
+			
+			<!-- Article 2 -->
+            <div class="article-card">
+                <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/other4/485747275_1011343737759116_7049385952467502726_n%20(1)%20(1)%20(1).jpg?updatedAt=1744092089711')">
+                    <span class="article-category">Genaral knowledge</span>
+					 <span class="article-new-tag" data-added="2025-04-08T12:00:00">New Article</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">2025.04.09</div>
+                    <h3 class="article-title">"ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව"</h3>
+                    <p class="article-excerpt">ලස්සන සකුරා මල් පිපෙන සුන්දර ජපානය යනු, බෞද්ධ සිද්ධස්ථාන බොහොමයක් ඇති රාජ්‍යයකි. ජපානයේ බොහෝ දෙනා විවිධ ආගම් වලට අයත්ව උපන්නද, අවසන ඔවුනගේ ආධ්‍යාත්මික ගමනානත්ය වන්නේ, බෞද්ධාගම යැයි එරට බොහෝ දෙනෙක් විශ්වාස කරන්නකි...</p>
+                    <a href="https://www.lakshan2004.my-board.org/home/other_letters/other4/0_25" class="read-more">Read More</a>
                 </div>
             </div>
 
@@ -684,14 +723,6 @@
                     <a href="https://www.lakshan2004.my-board.org/sadaham-arana/dhamma-articles/1/sitha_niwana_01" class="read-more">Read More</a>
                 </div>
             </div>
-        </div>
-
-        <div class="pagination">
-            <div class="page-item" onclick="window.location.href='index.html'">1</div>
-            <div class="page-item">2</div>
-            <div class="page-item">3</div>
-            <div class="page-item">4</div>
-            <div class="page-item">→</div>
         </div>
 
         <section class="newsletter">
