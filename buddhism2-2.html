@@ -8,7 +8,7 @@
     <!-- Favicon link -->
     <link rel="icon" href="https://iili.io/35Gp7st.jpg" type="image/x-icon">
     <style>
-        * {
+      * {
             box-sizing: border-box;
         }
 
@@ -26,10 +26,11 @@
             scroll-behavior: smooth;
             height: 100%;
         }
-
+        
+        /* Updated header with video background */
         header {
-            background: linear-gradient(to right, #6f98e8, #e4e86f);
-            color: black;
+            position: relative;
+            color: white;
             padding: 0rem;
             text-align: center;
             display: flex;
@@ -38,7 +39,30 @@
             flex-wrap: wrap;
             width: 100%;
             min-height: 20vh;
-            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Video background styles */
+        #header-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        /* Add a semi-transparent overlay to ensure text readability */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
         }
 
         header img {
@@ -47,54 +71,24 @@
             left: 0;
             max-height: 65px;
             margin-right: 1rem;
+            z-index: 1;
         }
 
         header h1 {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         header p {
             font-style: italic;
             margin-top: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
         }
-
-        nav {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-bottom: 1px solid #dee2e6;
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease-in-out;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            background: #1a1c47;
-            color: white;
-            transform: scale(1.1);
-        }
-
+		
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -557,11 +551,20 @@
 <body>
 
     <header>
-        <img src="https://iili.io/35EzAxe.png" alt="Lakshan Bandara Logo">
-        <div>
+        <!-- Video background -->
+        <video id="header-video" autoplay muted loop>
+            <source src="https://ik.imagekit.io/bcd8ygetu/other4/Blue%20White%20Animated%20Business%20Technology%20YouTube%20Video%20Intro%20(3).mp4?updatedAt=1744098305768" type="video/mp4">
+            <!-- Fallback for browsers that don't support video -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Header content -->
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://iili.io/35EzAxe.png" alt="Lakshan Bandara Logo">
+            </div>
             <h1>Lakshan Bandara</h1>
             <p>"Believe you can and you're halfway there"</p>
-			</div>
         </div>
     </header>
 	
