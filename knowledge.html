@@ -524,6 +524,25 @@
 		header {
 			padding: 0rem;
 			}
+		.article-new-tag {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			background: #ffae00;
+			color: white;
+			padding: 5px 12px;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 500;
+			z-index: 1;
+			animation: pulse 1.5s infinite;
+		}
+
+		@keyframes pulse {
+			0% { transform: scale(1); }
+			50% { transform: scale(1.05); }
+			100% { transform: scale(1); }
+		}
     </style>
 </head>
 <body>
@@ -556,7 +575,21 @@
         </div>
 
         <div class="articles-grid">
-            <!-- Article 1 -->
+			<!-- Article 1 -->
+            <div class="article-card">
+                <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/other4/485747275_1011343737759116_7049385952467502726_n%20(1)%20(1)%20(1).jpg?updatedAt=1744092089711')">
+                    <span class="article-category">Genaral knowledge</span>
+					 <span class="article-new-tag" data-added="2025-04-08T12:00:00">New</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">2025.04.09</div>
+                    <h3 class="article-title">"ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව"</h3>
+                    <p class="article-excerpt">ලස්සන සකුරා මල් පිපෙන සුන්දර ජපානය යනු, බෞද්ධ සිද්ධස්ථාන බොහොමයක් ඇති රාජ්‍යයකි. ජපානයේ බොහෝ දෙනා විවිධ ආගම් වලට අයත්ව උපන්නද, අවසන ඔවුනගේ ආධ්‍යාත්මික ගමනානත්ය වන්නේ, බෞද්ධාගම යැයි එරට බොහෝ දෙනෙක් විශ්වාස කරන්නකි...</p>
+                    <a href="https://www.lakshan2004.my-board.org/home/other_letters/other4/0_25" class="read-more">Read More</a>
+                </div>
+            </div>
+			
+            <!-- Article 2 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-05-41.jpg?updatedAt=1743849377816')">
                     <span class="article-category">General Knowledge</span>
@@ -569,7 +602,7 @@
                 </div>
             </div>
 
-            <!-- Article 2 -->
+            <!-- Article 3 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/481661267_1182145223921790_8712585928430435344_n.jpg?updatedAt=1743869009376')">
                     <span class="article-category">General Knowledge</span>
@@ -582,7 +615,7 @@
                 </div>
             </div>
 
-            <!-- Article 3 -->
+            <!-- Article 4 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/images%20(1).jpg?updatedAt=1743869064716')">
                     <span class="article-category">General Knowledge</span>
@@ -595,7 +628,7 @@
                 </div>
             </div>
 
-            <!-- Article 4 -->
+            <!-- Article 5 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-10-26.jpg?updatedAt=1743849375973')">
                     <span class="article-category">General Knowledge</span>
@@ -608,7 +641,7 @@
                 </div>
             </div>
 
-            <!-- Article 5 -->
+            <!-- Article 6 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-14-20.jpg?updatedAt=1743849375575')">
                     <span class="article-category">General Knowledge</span>
@@ -621,7 +654,7 @@
                 </div>
             </div>
 
-            <!-- Article 6 -->
+            <!-- Article 7 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-17-49.jpg?updatedAt=1743849375582')">
                     <span class="article-category">General Knowledge</span>
@@ -634,7 +667,7 @@
                 </div>
             </div>
 
-            <!-- Article 7 -->
+            <!-- Article 8 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-12-37.jpg?updatedAt=1743849376292')">
                     <span class="article-category">General Knowledge</span>
@@ -647,7 +680,7 @@
                 </div>
             </div>
 
-            <!-- Article 8 -->
+            <!-- Article 9 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-22-51.jpg?updatedAt=1743849383134')">
                     <span class="article-category">General Knowledge</span>
@@ -660,7 +693,7 @@
                 </div>
             </div>
 
-            <!-- Article 9 -->
+            <!-- Article 10 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/photo_2025-03-24_21-24-01.jpg?updatedAt=1743849385649')">
                     <span class="article-category">General Knowledge</span>
@@ -672,8 +705,8 @@
                     <a href="https://www.lakshan2004.my-board.org/home/other_letters/other/0_8" class="read-more">Read More</a>
                 </div>
             </div>
-
-	    <!-- Article 10 -->
+			
+			<!-- Article 11 -->
             <div class="article-card">
                 <div class="article-image" style="background-image: url('https://ik.imagekit.io/bcd8ygetu/481181929_1078858627591701_1969051485229981582_n.jpg?updatedAt=1743869008351')">
                     <span class="article-category">General Knowledge</span>
@@ -764,6 +797,28 @@
 			  article.style.display = text.includes(value) ? 'block' : 'none';
 			});
 		  });
+		  
+		// Function to check and hide NEW tags older than 72 hours
+		function checkNewTags() {
+			const newTags = document.querySelectorAll('.article-new-tag');
+			
+			newTags.forEach(tag => {
+				const addedTime = new Date(tag.getAttribute('data-added'));
+				const currentTime = new Date();
+				const timeDiff = currentTime - addedTime; // difference in milliseconds
+				const hoursDiff = timeDiff / (1000 * 60 * 60); // convert to hours
+				
+				if (hoursDiff >= 72) { // Changed from 24 to 72 hours
+					tag.style.display = 'none';
+				}
+			});
+		}
+
+		// Run when page loads
+		checkNewTags();
+
+		// Also check periodically (every 5 minutes) in case user stays on the page
+		setInterval(checkNewTags, 300000);
 	</script>
 
 	</body>
