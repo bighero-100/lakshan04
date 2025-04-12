@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f7f2;
+      padding: 20px;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      padding-bottom: 30px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0b5394, #bf8f00, #0b5394);
+      animation: borderGlow 3s infinite alternate;
+    }
+    
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    .header {
+      padding: 30px 30px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #bf8f00, transparent);
+    }
+    
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      color: #0b5394;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      color: #bf8f00;
+      margin-top: 5px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .meta {
+      font-size: 12px;
+      margin: 15px 0 5px;
+      color: #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    
+    .meta::before, .meta::after {
+      content: '•';
+      color: #bf8f00;
+    }
+    
+    .image {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      max-height: 450px;
+    }
+    
+    .image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .image:hover img {
+      transform: scale(1.02);
+    }
+    
+    .image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, rgba(11, 83, 148, 0.5), transparent);
+    }
+    
+    .content {
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: #333;
+      padding: 30px;
+      position: relative;
+      border-left: 1px solid #eaeaea;
+      border-right: 1px solid #eaeaea;
+      line-height: 1.8;
+    }
+    
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    .content strong {
+      color: #0b5394;
+    }
+    
+    .content-border {
+      position: relative;
+    }
+    
+    .content-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #eaeaea, transparent);
+    }
+    
+    .footer {
+      text-align: right;
+      padding: 0 30px 10px;
+      font-style: italic;
+      font-size: 12px;
+      color: #777;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        border-radius: 10px;
+      }
+      
+      .header {
+        padding: 20px 15px 15px;
+      }
+      
+      .title {
+        font-size: 22px;
+      }
+      
+      .heading {
+        font-size: 16px;
+      }
+      
+      .content {
+        padding: 20px 15px;
+        font-size: 13px;
+      }
+    }
+
+    /* Subtle shimmer effect on title */
+    @keyframes shimmer {
+      0% { background-position: -100% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .title::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.5) 50%, 
+        rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+      pointer-events: none;
+    }
+	
+	/* Heading Top Center */
+        .heading12 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 40px; /* Adjust top margin */
+            text-align: center;
+        }
+	
+	/* Buttons Container */
+	.share-container {
+	  margin-top: 20px; /* Space below heading */
+	  display: flex;
+	  gap: 15px;
+	  align-items: center;
+	  justify-content: center; /* Center horizontally */
+	}
+
+
+        /* Share Buttons */
+        .share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .whatsapp-button {
+            color: #25D366;
+        }
+        
+        .telegram-button {
+            color: #0088cc;
+        }
+
+        .share-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .share-button:hover {
+            transform: scale(1.1);
+        }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">ජපානයට පැමිණෙන සංචාරකයින් අනිවාර්යෙන්ම නැරඹීමට යන පිළිරුව</div>
+      <div class="heading">උෂිකු දයබුත්සු</div>
+      <div class="meta">Lakshan • April 08 at 5:16 PM</div>
+    </div>
+    
+    <div class="image">
+      <img src="https://ik.imagekit.io/bcd8ygetu/other4/485747275_1011343737759116_7049385952467502726_n%20(1)%20(1)%20(1).jpg?updatedAt=1744092089711" alt="Ushiku Daibutsu">
+    </div>
+    
+    <div class="content-border">
+      <div class="content">
+        <p>ලස්සන සකුරා මල් පිපෙන සුන්දර ජපානය යනු, බෞද්ධ සිද්ධස්ථාන බොහොමයක් ඇති රාජ්‍යයකි. ජපානයේ බොහෝ දෙනා විවිධ ආගම් වලට අයත්ව උපන්නද, අවසන ඔවුනගේ ආධ්‍යාත්මික ගමනානත්ය වන්නේ, බෞද්ධාගම යැයි එරට බොහෝ දෙනෙක් විශ්වාස කරන්නකි.</p>
+        
+        <p>ඒ කතාව කෙසේ වෙතත් ජපානයේ සංචාරය කරන බොහෝ සංචාරකයින් අනිවාර්යයෙන්ම සංචාරයේ යෙදෙන බොදු ස්ථාන අතර (උෂිකු දයබුත්සු) <strong>"Ushiku Daibutsu"</strong> යනු ජාත්‍යන්තරව ප්‍රකටව ඇති ස්ථානයකි.</p>
+        
+        <p>වසර කීපයකට පෙරදී ලෝකයේ විශාලතම පිළිමය ලෙස වර්ග වූ මෙම හිටි බුදු පිළිම වහන්සේ පිළිරුව වත්මනෙහි ලොව පස්වැනියට විශාලතම පිළිමය ලෙස සදහන් වේ.</p>
+        
+        <p>ජපානයේ ඉබරකී ප්‍රාන්තයේ දැක ගත හැකි මෙම බුදු ප්‍රතිමාව තනනු ලැබුවේ, 1993 වසරේදීය. සම්පූර්ණ උස මීටර් 120ක් හෙවත් අඩි 390 ක් වන අතර, ඇතුළත ගර්භය වෙත පිවිසිය හැකි වන පරිදි නිමවා තිබීම මෙහි ඇති සුවිශේෂතවය වන්නේය.</p>
+        
+        <p>ගර්භය ඇතුළත ඇති සෝපානයෙන් අඩි 279 ක් ඉහලින් ඇති නිරීක්ෂණ තට්ටුව හෙවත්, නැරඹුම් ස්ථානය වෙත යා හැකිය. මෙම බුදු ප්‍රතිමාවෙන්, නිරූපණය වන්නේ, අමිතාභය බුදුන් යැයි, සදහන් කර තිබේ.</p>
+        
+        <p>මෙම ප්‍රතිමාව නිමවා ඇත්තේ ලෝහයෙනි. මෙම ස්ථානය පිහිටුවා ඇත්තේ ෂින් බොදු දහම මෙන්ම බොදු දහමේ ඉගැන්වීම් පාසලක් ලෙස "Jodo Shinshu" ආරම්භ කිරීමට පුරෝගාමීව කටයුතු කළ 1173 ත් 1263 ත් අතර කාලයේ දී ජීවත් වූ ෂින්රාන් භික්ෂුව අනුස්මරණය කිරීම වෙනුවෙනි.</p>
+        
+        <p>මෙම ප්‍රතිමාවේ බර ටොන් 4003 කි. රාත්තල් වලින් නම්, 8,825,000 කි.</p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      සදැල්ල වෙතින්...
+    </div>
+	
+	<h4 class="heading12">ලිපිය බෙදා හරින්න</h4>
+	
+	<div class="share-container">
+        <a href="https://api.whatsapp.com/send?text=%20Share%20Link%20🙃%20-%20https://www.lakshan2004.my-board.org/home/other_letters/other-2/0_20" 
+           class="share-button whatsapp-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+            <span>WhatsApp</span>
+        </a>
+        
+        <a href="https://t.me/share/url?&text=%20Share%20Link%20🙃%20-%20https://www.lakshan2004.my-board.org/home/other_letters/other-2/0_20" 
+           class="share-button telegram-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+            <span>Telegram</span>
+        </a>
+    </div>
+
+  </div>
+</body>
+</html>
