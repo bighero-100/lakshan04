@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="ඔබගේ XIAOMI දුරකථනයේ බැටරි ආයු කාලය දීර්ඝ කරන්නේ කෙසේද?">
+  <meta property="og:description" content="සන්නිවේදනය, විනෝදාස්වාදය සහ රැකියා කටයුතු වැනි විවිධ අරමුණු සඳහා සේවය කරමින්, ස්මාර්ට්ෆෝන් අපගේ දෛනික ජීවිතයේ වැදගත් කාර්යභාරයක් ඉටු කරයි. කෙසේ වෙතත්, පරිශීලකයින් මුහුණ දෙන පොදු ගැටළුවක් වන්නේ බැටරි ආයු කාලයයි. තාක්ෂණික දියුණුව තිබියදීත්, ස්මාර්ට්ෆෝන් බැටරි ඉක්මනින් බැස යා හැක...">
+  <meta property="og:image" content="https://ik.imagekit.io/bcd8ygetu/other4/images_q=tbn:ANd9GcTpEgzxJ7QpT-A3Jz-4932zSbp6QHFSrSQNvw&s?updatedAt=1744482276897">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f7f2;
+      padding: 20px;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      padding-bottom: 30px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0b5394, #bf8f00, #0b5394);
+      animation: borderGlow 3s infinite alternate;
+    }
+    
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 5px;
+      width: 50px;
+      height: 50px;
+      z-index: 10;
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .header {
+      padding: 30px 30px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #bf8f00, transparent);
+    }
+    
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      color: #0b5394;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      color: #bf8f00;
+      margin-top: 5px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .meta {
+      font-size: 12px;
+      margin: 15px 0 5px;
+      color: #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    
+    .meta::before, .meta::after {
+      content: '•';
+      color: #bf8f00;
+    }
+    
+    .image {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      max-height: 450px;
+    }
+    
+    .image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .image:hover img {
+      transform: scale(1.02);
+    }
+    
+    .image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, rgba(11, 83, 148, 0.5), transparent);
+    }
+    
+    .content {
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: #333;
+      padding: 30px;
+      position: relative;
+      border-left: 1px solid #eaeaea;
+      border-right: 1px solid #eaeaea;
+      line-height: 1.8;
+    }
+    
+    .content ph {
+	  position: relative;
+      margin-bottom: 15px;
+	  font-weight: bold;
+	  font-family: 'Open Sans', sans-serif-bold;
+    }
+    
+    .content strong {
+      color: #0b5394;
+	  font-size: 15px;
+    }
+    
+	.content strong001 {
+      color: #cc1486;
+	  font-size: 18px;
+    }
+    .content-border {
+      position: relative;
+    }
+    
+    .content-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #eaeaea, transparent);
+    }
+    
+    .footer {
+      text-align: right;
+      padding: 0 30px 10px;
+      font-style: italic;
+      font-size: 12px;
+      color: #777;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        border-radius: 10px;
+      }
+      
+      .header {
+        padding: 20px 15px 15px;
+      }
+      
+      .title {
+        font-size: 22px;
+      }
+      
+      .heading {
+        font-size: 16px;
+      }
+      
+      .content {
+        padding: 20px 15px;
+        font-size: 13px;
+      }
+      
+      .logo {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Subtle shimmer effect on title */
+    @keyframes shimmer {
+      0% { background-position: -100% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .title::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.5) 50%, 
+        rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+      pointer-events: none;
+    }
+	
+	/* Heading Top Center */
+        .heading12 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 40px; /* Adjust top margin */
+            text-align: center;
+        }
+	
+	/* Buttons Container */
+	.share-container {
+	  margin-top: 20px; /* Space below heading */
+	  display: flex;
+	  gap: 15px;
+	  align-items: center;
+	  justify-content: center; /* Center horizontally */
+	}
+
+
+        /* Share Buttons */
+        .share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .whatsapp-button {
+            color: #25D366;
+        }
+        
+        .telegram-button {
+            color: #0088cc;
+        }
+
+        .share-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .share-button:hover {
+            transform: scale(1.1);
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://ik.imagekit.io/bcd8ygetu/O%20(4).png?updatedAt=1744452389254" alt="Logo">
+    </div>
+    
+    <div class="header">
+      <div class="title">"ඔබගේ XIAOMI දුරකථනයේ බැටරි ආයු කාලය දීර්ඝ කරන්නේ කෙසේද?"</div>
+	  <div class="heading"> සරල නීති කිහිපයක් අනුගමනය කිරීමෙන්, ඔබට ඔබේ Xiaomi උපාංගයේ බැටරි ආයු කාලය දීර්ඝ කළ හැකිය.</div>
+    </div>
+    
+    <div class="image">
+      <img src="https://ik.imagekit.io/bcd8ygetu/other4/nXWakEqepjgNDo4a8LccTG.jpg?updatedAt=1744481552454" alt="Battery Intelligence">
+    </div>
+    <div class="meta">Lakshan • April 13 at 12:00 AM</div>
+    <div class="content-border">
+      <div class="content">
+        <ph>කාලයත් සමඟ බැටරි ක්‍රියාකාරිත්වය අඩු විය හැකිය. සරල නීති කිහිපයක් අනුගමනය කිරීමෙන්, ඔබට ඔබේ Xiaomi උපාංගයේ බැටරි ආයු කාලය දීර්ඝ කළ හැකිය. මෙන්න උපාය මාර්ග කිහිපයක්:</ph>
+		
+		<p><strong001>1. ADJUST SCREEN BRIGHTNESS</strong001></p>
+		
+		<p>බැටරි බලය ඉතිරි කර ගැනීම සඳහා, Brightness මට්ටම Manually සකසන්න. Go to "Settings" > "Display" > "Brightness level" සහ එය අඩු කරන්න. "Dark Mode"සක්‍රීය කරන්න. Amoled displays, වල "Settings"> "Display"</p>
+		
+		<p><strong001>2. MANAGE BACKGROUND APPS</strong001></p>
+		
+		<p>බොහෝ apps පසුබිමේ ක්‍රියාත්මක වන අතර, භාවිතයේ නොමැති විට පවා බැටරි බලය අඩු කරයි.</p>
+		<p>මෙම පියවර අනුගමනය කරන්න:</p>
+		   1 Open it in “Settings” > “Battery & performance”<br>
+		   2 Select Battery saving app<br>
+		   3 Limit background activity of non-essential apps.
+		   
+		<p>සමාජ මාධ්‍ය සහ පණිවිඩ apps විශේෂයෙන් බලගැන්වේ. එබැවින් ඒවායේ ක්‍රියාකාරකම් සීමා කිරීමෙන් ඔබගේ උපාංගයේ බැටරි ක්‍රියාකාරිත්වය සැලකිය යුතු ලෙස වැඩිදියුණු කළ හැකිය.</p>
+		
+		<p><strong001>3. ACTIVATING BATTERY SAVING MODE</strong001>
+		<p>Xiaomi devices සතුව පවතිනවා battery saver mode එක , එයින් reduces background processes, lowers the refresh rate, and disables animations to save power. මේ option එක් බැටරි බලය අඩු වූ විගස සක්‍රීය කර ගැනීමට පුළුවන්.</p>
+		
+		<p>සක්‍රීය කිරීමට :</p>
+			1 Go to " Settings" > "Battery & performance"<br>
+			2 Activate the economy mode for charging the battery 
+		
+		<p><strong001>4. MAKE SURE YOUR DEVICE IS UPDATED</strong001>.
+		<p>මීට අමතරව, Xiaomi නිතරම බැටරි ප්‍රශස්තිකරණ විශේෂාංග පවතින updates නිකුත් කරයි. ඔබගේ උපාංගය update කර ගැනීමෙන් බැටරි කළමනාකරණය සැලකිය යුතු ලෙස වැඩිදියුණු කළ හැකිය.</p>
+		
+		<p>නවතම updates සඳහා පරීක්ෂා කිරීමට:</p>
+
+			1 Go to " Settings” > “About phone” > “System update”<br>
+			2 Download and install the latest update.
+		
+		<p><strong001>5. DISABLING UNNECESSARY FEATURES</strong001>
+		
+		<p>Wi-Fi, Bluetooth, GPS සහ NFC, අනවශ්‍ය ලෙස සක්‍රිය කළහොත් බැටරිය බැස යා හැක. භාවිතයේ නොමැති විට මෙම විශේෂාංග අක්‍රිය කිරීම මගින් බැටරි ආයු කාලය දීර්ඝ කිරීමට උපකාරී වේ.</p>
+		
+		<p>Managing them:</p>
+
+			1 Swipe down to access Navigation Bar<br>
+			2 Disable all features that are not in use.
+			
+		<p>විශේෂයෙන්ම, GPS සැලකිය යුතු ශක්තියක් පරිභෝජනය කරයි.</p>
+		
+		<p><strong001>.6.  REDUCING SCREEN TIMEOUT</strong001>
+		
+		<p>The device remains active for a few seconds after you stop using it. A long screen timeout can cause excessive battery drain.</p>
+
+		<p>To change this setting:</p>
+
+			Go to Settings > Display > Sleep mode.<br>
+			Set the timeout period to 30 seconds or 1 minute
+			
+		<p><strong001>7. CHOOSE STATIC WALLPAPERS</strong001></p>
+
+		<p>Although live wallpapers are visually appealing, they consume more battery power due to high CPU and GPU load. Instead, choose a static wallpaper</p>
+		<p>Live wallpapers යොදන්න එපා. Battery එක් ඉක්මනට low වෙනවා. Static Image එකක් යොදාගන්න.</p>
+
+			Go to Settings > Wallpaper & Personalization<br> 
+			Select Static Image
+		
+		
+		<p><strong001>8. AVOID HIGH TEMPERATURES</strong001></p>
+		<p>අධික උෂ්ණත්වයන් බැටරි ක්‍රියාකාරිත්වයට සැලකිය යුතු ලෙස බලපෑ හැකිය. අධික තාපය බැටරියට හානි කළ හැකි අතර, සිසිල් තත්වයන් ද එහි ක්‍රියාකාරිත්වයට බලපෑ හැකිය.</p>
+
+		<p>බැටරි සෞඛ්‍යය පවත්වා ගැනීමට:</p>
+
+			උපාංගය සෘජු හිරු එළියෙන් හැකිතාක් ඈත් කර තබන්න.<br>
+			ආරෝපණය කිරීමේදී දුරකථනය භාවිතා නොකරන්න.
+		
+		<div class="image">
+			<img src="https://ik.imagekit.io/bcd8ygetu/other4/Hyperos3-1536x865.jpg?updatedAt=1744481475863" alt="Battery Intelligence">
+		</div>
+		
+		<p>වාර්තාකරු Mark Gurman පවසන්නේ, iOS 18 යාවත්කාලීනය iPhone මෘදුකාංග ඉතිහාසයේ වඩාත්ම වැදගත් යාවත්කාලීනයක් විය හැකි බවයි. මෙම යාවත්කාලීනය RCS පණිවිඩ සහය, වැඩිදියුණු කළ පණිවිඩකරණ විශේෂාංග සහ අලුත්ම කෘත්‍රිම බුද්ධිය විශේෂාංග ඇතුළත් කරනු ඇත.</p>
+      </div>
+    </div>
+	<div class="footer">
+      Big Hero_100
+	  
+	<div class="share-container">
+        <a href="https://api.whatsapp.com/send?text=%20Share%20Link%20🙃%20-%20https://bighero-100.github.io/lakshan04/articles/knowledge1/iso.html" 
+           class="share-button whatsapp-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+            <span>WhatsApp</span>
+        </a>
+        
+        <a href="https://t.me/share/url?&text=%20Share%20Link%20🙃%20-%20https://bighero-100.github.io/lakshan04/articles/knowledge1/iso.html" 
+           class="share-button telegram-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+            <span>Telegram</span>
+        </a>
+    </div>
+    
+    
+    </div>
+  </div>
+</body>
+</html>
