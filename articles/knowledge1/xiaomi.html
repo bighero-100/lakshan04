@@ -377,60 +377,60 @@
             font-size: 18px;
         }
         
-        /* Note about demo */
-        .demo-note {
+        /* Firebase implementation info */
+        .firebase-info {
             margin: 5px 0;
             padding: 5px 10px;
             font-size: 12px;
             color: #777;
             text-align: center;
-            background-color: #fffde7;
+            background-color: #e8f5e9;
             border-radius: 5px;
         }
         
-        /* Server solution card */
-        .server-solution {
-            margin: 20px auto;
-            max-width: 90%;
-            padding: 15px;
-            background-color: #f5f8ff;
-            border-radius: 8px;
-            border-left: 3px solid #0b5394;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s;
         }
         
-        .server-solution h4 {
-            color: #0b5394;
-            margin-bottom: 8px;
-            font-size: 16px;
+        .loading-overlay.active {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
         }
         
-        .server-solution p {
-            color: #555;
-            font-size: 13px;
-            margin-bottom: 12px;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(11, 83, 148, 0.2);
+            border-top-color: #0b5394;
+            border-radius: 50%;
+            animation: spin 1s ease-in-out infinite;
         }
         
-        .server-solution ul {
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .server-solution li {
-            margin-bottom: 5px;
-            font-size: 13px;
-        }
-        
-        .server-solution code {
-            background: #e8eaf6;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 12px;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
   </style>
 </head>
 <body>
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+  </div>
+
   <div class="container">
     <div class="logo">
       <img src="https://ik.imagekit.io/bcd8ygetu/O%20(4).png?updatedAt=1744452389254" alt="Logo">
@@ -446,7 +446,7 @@
     </div>
     <div class="meta">Lakshan • April 13 at 12:00 AM</div>
     
-    <!-- New engagement section -->
+    <!-- New engagement section with Firebase integration -->
     <div class="engagement-container">
       <div class="like-container">
         <button class="heart-btn" id="heartBtn">
@@ -460,26 +460,9 @@
       </div>
     </div>
     
-    <!-- Information note -->
-    <div class="demo-note">
-      මෙම like සහ view counter ආදර්ශනයක් පමණි. පරිගණකය වෙනස් කළ විට අගයන් රැකෙන්නේ නැත.
-    </div>
-    
-    <!-- Server solution information -->
-    <div class="server-solution">
-      <h4>සැම පරිශීලකයෙකුම අතර දත්ත සුරැකීමට:</h4>
-      <p>මෙම like සහ view counts සුරැකීමට, ඔබට පහත එකක් අවශ්‍ය වනු ඇත:</p>
-      <ul>
-        <li>සරල backend සේවාදායකයක් (PHP, Node.js, Python)</li>
-        <li>දත්ත ගබඩාවක් (MySQL, MongoDB වැනි)</li>
-        <li>API endpoints: 
-          <code>GET /views</code>, 
-          <code>POST /views/increment</code>, 
-          <code>GET /likes</code>, 
-          <code>POST /likes/toggle</code>
-        </li>
-      </ul>
-      <p>මෙම දත්ත සේවාදායකයේ සුරැකීමෙන්, සියලුම පරිශීලකයින්ට නිවැරදි තොරතුරු දැකිය හැකිය.</p>
+    <!-- Firebase information note -->
+    <div class="firebase-info">
+      දැන් සියලු පරිශීලකයින් අතර වැඩි දියුණු කළ likes සහ views Firebase මගින් ගබඩා කර ඇත.
     </div>
     
     <div class="content-border">
@@ -578,66 +561,190 @@
     </div>
   </div>
 
+  <!-- Import Firebase SDK -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-firestore-compat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-analytics-compat.min.js"></script>
+
   <script>
-    // Initialize heart button and view counter
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get elements
-      const heartBtn = document.getElementById('heartBtn');
-      const heartIcon = document.getElementById('heartIcon');
-      const likeCount = document.getElementById('likeCount');
-      const viewCount = document.getElementById('viewCount');
-      
-      // Get stored likes and views from localStorage
-      let likes = localStorage.getItem('xiaomi_article_likes') ? parseInt(localStorage.getItem('xiaomi_article_likes')) : 0;
-      let views = localStorage.getItem('xiaomi_article_views') ? parseInt(localStorage.getItem('xiaomi_article_views')) : 0;
-      let isLiked = localStorage.getItem('xiaomi_article_liked') === 'true';
-      
-      // Set initial values
-      likeCount.textContent = likes;
-      
-      // Handle heart button state
-      if (isLiked) {
-        heartIcon.classList.add('fas');
-        heartBtn.classList.add('liked');
-      } else {
-        heartIcon.classList.add('far');
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCc3coVEo03PYiaSU4ASamtuI6mcB5l6Lw",
+      authDomain: "post-tracker-a14f9.firebaseapp.com",
+      projectId: "post-tracker-a14f9",
+      storageBucket: "post-tracker-a14f9.firebasestorage.app",
+      messagingSenderId: "1059403332375",
+      appId: "1:1059403332375:web:f8f1a8b9b6fb76c266d552",
+      measurementId: "G-8SNGN9HWT1"
+    };
+    
+    // Initialize Firebase app
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    const db = firebase.firestore();
+    
+    // Document ID for this article
+    const ARTICLE_ID = "xiaomi-battery-tips";
+    
+    // Get DOM elements
+    const heartBtn = document.getElementById('heartBtn');
+    const heartIcon = document.getElementById('heartIcon');
+    const likeCount = document.getElementById('likeCount');
+    const viewCount = document.getElementById('viewCount');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    // Show loading spinner
+    function showLoading() {
+      loadingOverlay.classList.add('active');
+    }
+    
+    // Hide loading spinner
+    function hideLoading() {
+      loadingOverlay.classList.remove('active');
+    }
+    
+    // Generate a unique user ID if not exists
+    function getUserId() {
+      let userId = localStorage.getItem('firebase_user_id');
+      if (!userId) {
+        userId = 'user_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('firebase_user_id', userId);
       }
-      
-      // Increment view count
-      views++;
-      localStorage.setItem('xiaomi_article_views', views);
-      viewCount.textContent = views;
-      
-      // Heart button click handler
-      heartBtn.addEventListener('click', function() {
-        heartBtn.classList.add('anim');
-        
-        // Toggle like status
-        if (!isLiked) {
-          heartIcon.classList.remove('far');
-          heartIcon.classList.add('fas');
-          heartBtn.classList.add('liked');
-          likes++;
-          isLiked = true;
-        } else {
-          heartIcon.classList.remove('fas');
-          heartIcon.classList.add('far');
-          heartBtn.classList.remove('liked');
-          likes--;
-          isLiked = false;
-        }
-        
-        // Update UI and localStorage
-        likeCount.textContent = likes;
-        localStorage.setItem('xiaomi_article_likes', likes);
-        localStorage.setItem('xiaomi_article_liked', isLiked);
-        
-        // Remove animation class after animation completes
-        setTimeout(function() {
-          heartBtn.classList.remove('anim');
-        }, 500);
+      return userId;
+    }
+    
+    // Check if user has already liked this article
+    function checkUserLikeStatus(userId) {
+      return db.collection('user_likes')
+        .doc(`${ARTICLE_ID}_${userId}`)
+        .get()
+        .then(doc => {
+          const isLiked = doc.exists;
+          
+          // Set heart button state
+          if (isLiked) {
+            heartIcon.classList.add('fas');
+            heartBtn.classList.add('liked');
+          } else {
+            heartIcon.classList.add('far');
+          }
+          
+          return isLiked;
+        });
+    }
+    
+    // Get article data from Firestore
+    function getArticleStats() {
+      return db.collection('articles')
+        .doc(ARTICLE_ID)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            return doc.data();
+          } else {
+            // Create document if it doesn't exist
+            const initialData = { likes: 0, views: 0 };
+            db.collection('articles').doc(ARTICLE_ID).set(initialData);
+            return initialData;
+          }
+        });
+    }
+    
+    // Increment view count
+    function incrementViewCount() {
+      return db.collection('articles').doc(ARTICLE_ID).update({
+        views: firebase.firestore.FieldValue.increment(1)
       });
+    }
+    
+    // Toggle like status
+    function toggleLike(userId, isCurrentlyLiked) {
+      const userLikeDocRef = db.collection('user_likes').doc(`${ARTICLE_ID}_${userId}`);
+      const articleDocRef = db.collection('articles').doc(ARTICLE_ID);
+      
+      return db.runTransaction(async (transaction) => {
+        if (isCurrentlyLiked) {
+          // Remove like
+          transaction.delete(userLikeDocRef);
+          transaction.update(articleDocRef, {
+            likes: firebase.firestore.FieldValue.increment(-1)
+          });
+          return false;
+        } else {
+          // Add like
+          transaction.set(userLikeDocRef, { 
+            userId: userId,
+            articleId: ARTICLE_ID,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          transaction.update(articleDocRef, {
+            likes: firebase.firestore.FieldValue.increment(1)
+          });
+          return true;
+        }
+      });
+    }
+    
+    // Update UI with latest stats
+    function updateUI(stats) {
+      likeCount.textContent = stats.likes;
+      viewCount.textContent = stats.views;
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        showLoading();
+        
+        // Get user ID
+        const userId = getUserId();
+        
+        // Get article stats and check if user liked it
+        const [articleStats, isLiked] = await Promise.all([
+          getArticleStats(),
+          checkUserLikeStatus(userId)
+        ]);
+        
+        // Update UI with current stats
+        updateUI(articleStats);
+        
+        // Increment view count
+        await incrementViewCount();
+        
+        // Get updated view count
+        const updatedStats = await getArticleStats();
+        updateUI(updatedStats);
+        
+        // Set up heart button click handler
+        heartBtn.addEventListener('click', async function() {
+          try {
+            // Add animation
+            heartBtn.classList.add('anim');
+            
+            // Toggle like in Firebase
+            const newLikeStatus = await toggleLike(userId, heartBtn.classList.contains('liked'));
+            
+            // Update heart UI
+            if (newLikeStatus) {
+              heartIcon.classList.remove('far');
+              heartIcon.classList.add('fas');
+			  heartBtn.classList.remove('liked');
+        }
+
+        // Update UI with new stats
+        const updatedStats = await getArticleStats();
+        updateUI(updatedStats);
+      } catch (error) {
+        console.error('Error toggling like:', error);
+      }
     });
-  </script>
+
+  } catch (error) {
+    console.error('Error initializing article stats:', error);
+  } finally {
+    hideLoading();
+  }
+});
+</script>
 </body>
 </html>
