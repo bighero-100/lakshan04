@@ -2,13 +2,14 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Apple iOS 18: The Most Powerful Update in iPhone History?">
-  <meta property="og:description" content="2025 අප්‍රේල් වන විට, Apple සමාගම තවත් නවෝත්පාදන මාර්ගයකට පිවිසෙමින්, iOS 18 මෙහෙයුම් පද්ධතිය හරහා පරිශීලක අත්දැකීම වඩාත්ම උසස් කිරීමට සැලසුම් කරයි.">
-  <meta property="og:image" content="https://ik.imagekit.io/bcd8ygetu/other4/BatteryIntelligence_in_iOS_18_Could_Soon_Estimate_How_Long_It_Takes_to_Charge_Your_iPhone.jpg_v=1730966324?updatedAt=1744467159719">
+  <meta name="viewport" content="width=1024">
+  <meta property="og:title" content="ඔබගේ XIAOMI දුරකථනයේ බැටරි ආයු කාලය දීර්ඝ කරන්නේ කෙසේද?">
+  <meta property="og:description" content="සන්නිවේදනය, විනෝදාස්වාදය සහ රැකියා කටයුතු වැනි විවිධ අරමුණු සඳහා සේවය කරමින්, ස්මාර්ට්ෆෝන් අපගේ දෛනික ජීවිතයේ වැදගත් කාර්යභාරයක් ඉටු කරයි. කෙසේ වෙතත්, පරිශීලකයින් මුහුණ දෙන පොදු ගැටළුවක් වන්නේ බැටරි ආයු කාලයයි. තාක්ෂණික දියුණුව තිබියදීත්, ස්මාර්ට්ෆෝන් බැටරි ඉක්මනින් බැස යා හැක...">
+  <meta property="og:image" content="https://ik.imagekit.io/bcd8ygetu/other4/images_q=tbn:ANd9GcTpEgzxJ7QpT-A3Jz-4932zSbp6QHFSrSQNvw&s?updatedAt=1744482276897">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * {
+	* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -166,8 +167,11 @@
       line-height: 1.8;
     }
     
-    .content p {
+    .content ph {
+	  position: relative;
       margin-bottom: 15px;
+	  font-weight: bold;
+	  font-family: 'Open Sans', sans-serif-bold;
     }
     
     .content strong {
@@ -303,9 +307,130 @@
         .share-button:hover {
             transform: scale(1.1);
         }
+        
+        /* Heart like button */
+        .engagement-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .like-container, .view-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .heart-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            color: #aaa;
+            transition: all 0.3s ease;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .heart-btn.liked {
+            color: #ff4d6d;
+        }
+        
+        .heart-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .heart-btn.anim {
+            animation: heartPulse 0.4s ease;
+        }
+        
+        .like-count, .view-count {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .view-container {
+            color: #0b5394;
+        }
+        
+        .view-icon {
+            color: #0b5394;
+            font-size: 18px;
+        }
+        
+        /* Firebase implementation info */
+        .firebase-info {
+            margin: 5px 0;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s;
+        }
+        
+        .loading-overlay.active {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(11, 83, 148, 0.2);
+            border-top-color: #0b5394;
+            border-radius: 50%;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
   </style>
 </head>
 <body>
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+  </div>
+
   <div class="container">
     <div class="logo">
       <img src="https://ik.imagekit.io/bcd8ygetu/O%20(4).png?updatedAt=1744452389254" alt="Logo">
@@ -320,7 +445,26 @@
       <img src="https://ik.imagekit.io/bcd8ygetu/other4/BatteryIntelligence_in_iOS_18_Could_Soon_Estimate_How_Long_It_Takes_to_Charge_Your_iPhone.jpg_v=1730966324?updatedAt=1744467159719" alt="Battery Intelligence">
     </div>
     <div class="meta">Lakshan • April 08 at 7:00 PM</div>
-    <div class="content-border">
+    
+    <!-- New engagement section with Firebase integration -->
+    <div class="engagement-container">
+      <div class="like-container">
+        <button class="heart-btn" id="heartBtn">
+          <i class="fa-heart" id="heartIcon"></i>
+        </button>
+        <span class="like-count" id="likeCount">0</span>
+      </div>
+	  
+      <div class="view-container">
+        <i class="fas fa-eye view-icon"></i>
+        <span class="view-count" id="viewCount">0</span>
+      </div>
+    </div>
+	
+	<!-- Firebase information note -->
+    <div class="firebase-info">Apple</div>
+	
+	<div class="content-border">
       <div class="content">
         <p>2025 අප්‍රේල් වන විට, Apple සමාගම තවත් නවෝත්පාදන මාර්ගයකට පිවිසෙමින්, iOS 18 මෙහෙයුම් පද්ධතිය හරහා පරිශීලක අත්දැකීම වඩාත්ම උසස් කිරීමට සැලසුම් කරයි.</p>
 		
@@ -353,9 +497,192 @@
             <span>Telegram</span>
         </a>
     </div>
+</div>
+<!-- Import Firebase SDK -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-firestore-compat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-analytics-compat.min.js"></script>
+
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCc3coVEo03PYiaSU4ASamtuI6mcB5l6Lw",
+      authDomain: "post-tracker-a14f9.firebaseapp.com",
+      projectId: "post-tracker-a14f9",
+      storageBucket: "post-tracker-a14f9.firebasestorage.app",
+      messagingSenderId: "1059403332375",
+      appId: "1:1059403332375:web:f8f1a8b9b6fb76c266d552",
+      measurementId: "G-8SNGN9HWT1"
+    };
     
+    // Initialize Firebase app
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    const db = firebase.firestore();
     
-    </div>
-  </div>
+    // Document ID for this article
+    const ARTICLE_ID = "appleios";
+    
+    // Get DOM elements
+    const heartBtn = document.getElementById('heartBtn');
+    const heartIcon = document.getElementById('heartIcon');
+    const likeCount = document.getElementById('likeCount');
+    const viewCount = document.getElementById('viewCount');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    // Show loading spinner
+    function showLoading() {
+      loadingOverlay.classList.add('active');
+    }
+    
+    // Hide loading spinner
+    function hideLoading() {
+      loadingOverlay.classList.remove('active');
+    }
+    
+    // Generate a unique user ID if not exists
+    function getUserId() {
+      let userId = localStorage.getItem('firebase_user_id');
+      if (!userId) {
+        userId = 'user_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('firebase_user_id', userId);
+      }
+      return userId;
+    }
+    
+    // Check if user has already liked this article
+    function checkUserLikeStatus(userId) {
+      return db.collection('user_likes')
+        .doc(`${ARTICLE_ID}_${userId}`)
+        .get()
+        .then(doc => {
+          const isLiked = doc.exists;
+          
+          // Set heart button state
+          if (isLiked) {
+            heartIcon.classList.add('fas');
+            heartBtn.classList.add('liked');
+          } else {
+            heartIcon.classList.add('far');
+          }
+          
+          return isLiked;
+        });
+    }
+    
+    // Get article data from Firestore
+    function getArticleStats() {
+      return db.collection('articles')
+        .doc(ARTICLE_ID)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            return doc.data();
+          } else {
+            // Create document if it doesn't exist
+            const initialData = { likes: 0, views: 0 };
+            db.collection('articles').doc(ARTICLE_ID).set(initialData);
+            return initialData;
+          }
+        });
+    }
+    
+    // Increment view count
+    function incrementViewCount() {
+      return db.collection('articles').doc(ARTICLE_ID).update({
+        views: firebase.firestore.FieldValue.increment(1)
+      });
+    }
+    
+    // Toggle like status
+    function toggleLike(userId, isCurrentlyLiked) {
+      const userLikeDocRef = db.collection('user_likes').doc(`${ARTICLE_ID}_${userId}`);
+      const articleDocRef = db.collection('articles').doc(ARTICLE_ID);
+      
+      return db.runTransaction(async (transaction) => {
+        if (isCurrentlyLiked) {
+          // Remove like
+          transaction.delete(userLikeDocRef);
+          transaction.update(articleDocRef, {
+            likes: firebase.firestore.FieldValue.increment(-1)
+          });
+          return false;
+        } else {
+          // Add like
+          transaction.set(userLikeDocRef, { 
+            userId: userId,
+            articleId: ARTICLE_ID,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          transaction.update(articleDocRef, {
+            likes: firebase.firestore.FieldValue.increment(1)
+          });
+          return true;
+        }
+      });
+    }
+    
+    // Update UI with latest stats
+    function updateUI(stats) {
+      likeCount.textContent = stats.likes;
+      viewCount.textContent = stats.views;
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        showLoading();
+        
+        // Get user ID
+        const userId = getUserId();
+        
+        // Get article stats and check if user liked it
+        const [articleStats, isLiked] = await Promise.all([
+          getArticleStats(),
+          checkUserLikeStatus(userId)
+        ]);
+        
+        // Update UI with current stats
+        updateUI(articleStats);
+        
+        // Increment view count
+        await incrementViewCount();
+        
+        // Get updated view count
+        const updatedStats = await getArticleStats();
+        updateUI(updatedStats);
+        
+        // Set up heart button click handler
+        heartBtn.addEventListener('click', async function() {
+          try {
+            // Add animation
+            heartBtn.classList.add('anim');
+            
+            // Toggle like in Firebase
+            const newLikeStatus = await toggleLike(userId, heartBtn.classList.contains('liked'));
+            
+            // Update heart UI
+            if (newLikeStatus) {
+              heartIcon.classList.remove('far');
+              heartIcon.classList.add('fas');
+			  heartBtn.classList.remove('liked');
+        }
+
+        // Update UI with new stats
+        const updatedStats = await getArticleStats();
+        updateUI(updatedStats);
+      } catch (error) {
+        console.error('Error toggling like:', error);
+      }
+    });
+
+  } catch (error) {
+    console.error('Error initializing article stats:', error);
+  } finally {
+    hideLoading();
+  }
+});
+</script>
 </body>
 </html>
+  
