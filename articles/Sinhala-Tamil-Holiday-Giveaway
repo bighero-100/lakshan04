@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhala-Tamil Holiday Giveaway</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            background-image: linear-gradient(45deg, #ffdc7a25, #ff7a7a25);
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #d23b3b;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+        
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .provider-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .dialog {
+            background-color: #e6f2ff;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        
+        .mobitel {
+            background-color: #ffe6e6;
+            color: #cc0000;
+            border: 1px solid #cc0000;
+        }
+        
+        .hutch {
+            background-color: #e6ffe6;
+            color: #006600;
+            border: 1px solid #006600;
+        }
+        
+        .unknown {
+            background-color: #f2f2f2;
+            color: #666666;
+            border: 1px solid #666666;
+        }
+        
+        button {
+            background-color: #d23b3b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #b73333;
+        }
+        
+        .holiday-decoration {
+            text-align: center;
+            font-size: 24px;
+            margin: 15px 0;
+            color: #d23b3b;
+        }
+        
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .language-btn {
+            background: none;
+            border: 1px solid #d23b3b;
+            color: #d23b3b;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: auto;
+            font-size: 14px;
+        }
+        
+        .language-btn.active {
+            background-color: #d23b3b;
+            color: white;
+        }
+        
+        .error-message {
+            color: #cc0000;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #e6ffe6;
+            border: 1px solid #006600;
+            color: #006600;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .card-number {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        .limit-message {
+            display: none;
+            background-color: #ffe6e6;
+            border: 1px solid #cc0000;
+            color: #cc0000;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-toggle">
+            <button class="language-btn active" id="en-btn">English</button>
+            <button class="language-btn" id="si-btn">සිංහල</button>
+            <button class="language-btn" id="ta-btn">தமிழ்</button>
+        </div>
+        
+        <h1 id="main-title">Sinhala & Tamil New Year Giveaway</h1>
+        <p class="subtitle" id="subtitle">Enter your details to win exciting prizes!</p>
+        
+        <div class="holiday-decoration">✦ ✦ ✦</div>
+        
+        <form id="giveaway-form">
+            <div class="form-group">
+                <label for="name" id="name-label">Full Name:</label>
+                <input type="text" id="name" required>
+                <div class="error-message" id="name-error">Please enter your name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" id="phone-label">Phone Number:</label>
+                <div style="display: flex; align-items: center;">
+                    <input type="tel" id="phone" placeholder="07X XXX XXXX" required>
+                    <span class="provider-badge unknown" id="provider-badge">-</span>
+                </div>
+                <div class="error-message" id="phone-error">Please enter a valid Sri Lankan phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" id="submit-btn">Submit Entry</button>
+            </div>
+        </form>
+        
+        <div id="success-message" class="success-message">
+            <p>Thank you for your entry! Good luck!</p>
+            <p>Reload card number: <span class="card-number" id="card-number">xxxxxxxxxxxx</span></p>
+        </div>
+        
+        <div id="limit-message" class="limit-message">
+            <p>One device one more try. You have already submitted an entry.</p>
+        </div>
+        
+        <div class="holiday-decoration">✦ ✦ ✦</div>
+    </div>
+
+    <script>
+        // Device tracking
+        let hasSubmitted = localStorage.getItem('hasSubmitted') === 'true';
+        
+        // Phone provider detection
+        const phoneInput = document.getElementById('phone');
+        const providerBadge = document.getElementById('provider-badge');
+        
+        phoneInput.addEventListener('input', function(e) {
+            // Format the phone number as they type
+            let value = e.target.value.replace(/\D/g, '');
+            
+            // Limit to 10 digits
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            
+            // Apply formatting (07X XXX XXXX)
+            if (value.length > 3 && value.length <= 6) {
+                value = value.slice(0, 3) + ' ' + value.slice(3);
+            } else if (value.length > 6) {
+                value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
+            }
+            
+            e.target.value = value;
+            
+            // Detect provider based on prefix
+            detectProvider(value.replace(/\s/g, ''));
+        });
+        
+        function detectProvider(phoneNumber) {
+            // Remove all spaces for checking
+            phoneNumber = phoneNumber.replace(/\s/g, '');
+            
+            if (phoneNumber.length >= 3) {
+                const prefix = phoneNumber.substring(0, 3);
+                
+                // Dialog: 077, 076
+                if (prefix === '077' || prefix === '076') {
+                    providerBadge.textContent = 'Dialog';
+                    providerBadge.className = 'provider-badge dialog';
+                }
+                // Mobitel: 071, 070
+                else if (prefix === '071' || prefix === '070') {
+                    providerBadge.textContent = 'Mobitel';
+                    providerBadge.className = 'provider-badge mobitel';
+                }
+                // Hutch: 078
+                else if (prefix === '078') {
+                    providerBadge.textContent = 'Hutch';
+                    providerBadge.className = 'provider-badge hutch';
+                }
+                else {
+                    providerBadge.textContent = 'Other';
+                    providerBadge.className = 'provider-badge unknown';
+                }
+            } else {
+                providerBadge.textContent = '-';
+                providerBadge.className = 'provider-badge unknown';
+            }
+        }
+        
+        // Generate a random card number
+        function generateCardNumber() {
+            let cardNumber = '';
+            for (let i = 0; i < 12; i++) {
+                cardNumber += Math.floor(Math.random() * 10);
+            }
+            return cardNumber;
+        }
+        
+        // Check if device has already submitted
+        if (hasSubmitted) {
+            document.getElementById('limit-message').style.display = 'block';
+            document.getElementById('giveaway-form').style.display = 'none';
+        }
+        
+        // Form validation
+        const form = document.getElementById('giveaway-form');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if already submitted
+            if (hasSubmitted) {
+                document.getElementById('limit-message').style.display = 'block';
+                document.getElementById('giveaway-form').style.display = 'none';
+                return;
+            }
+            
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('name-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('name-error').style.display = 'none';
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone').value.replace(/\s/g, '');
+            if (phone.length !== 10 || !phone.startsWith('07')) {
+                document.getElementById('phone-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phone-error').style.display = 'none';
+            }
+            
+            if (isValid) {
+                // Mark as submitted
+                localStorage.setItem('hasSubmitted', 'true');
+                hasSubmitted = true;
+                
+                // Show success message with card number
+                const cardNumber = generateCardNumber();
+                document.getElementById('card-number').textContent = cardNumber;
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Hide the form
+                form.style.display = 'none';
+            }
+        });
+        
+        // Language toggle functionality
+        const enBtn = document.getElementById('en-btn');
+        const siBtn = document.getElementById('si-btn');
+        const taBtn = document.getElementById('ta-btn');
+        
+        // English content (default)
+        const enContent = {
+            title: 'Sinhala & Tamil New Year Giveaway',
+            subtitle: 'Enter your details to win exciting prizes!',
+            nameLabel: 'Full Name:',
+            phoneLabel: 'Phone Number:',
+            submitBtn: 'Submit Entry',
+            nameError: 'Please enter your name',
+            phoneError: 'Please enter a valid Sri Lankan phone number',
+            successMsg: 'Thank you for your entry! Good luck!',
+            reloadCard: 'Reload card number:',
+            limitMsg: 'One device one more try. You have already submitted an entry.'
+        };
+        
+        // Sinhala content
+        const siContent = {
+            title: 'සිංහල හා දෙමළ අලුත් අවුරුදු තෑගි ප්‍රදානය',
+            subtitle: 'විශිෂ්ට තෑගි දිනා ගැනීමට ඔබේ විස්තර ඇතුළත් කරන්න!',
+            nameLabel: 'සම්පූර්ණ නම:',
+            phoneLabel: 'දුරකථන අංකය:',
+            submitBtn: 'ඉල්ලුම් කරන්න',
+            nameError: 'කරුණාකර ඔබේ නම ඇතුළත් කරන්න',
+            phoneError: 'කරුණාකර වලංගු ශ්‍රී ලාංකික දුරකථන අංකයක් ඇතුළත් කරන්න',
+            successMsg: 'ඔබගේ ඇතුළත් කිරීම සඳහා ස්තූතියි! සුබ පැතුම්!',
+            reloadCard: 'නැවත පූරණය කිරීමේ කාඩ්පත් අංකය:',
+            limitMsg: 'එක උපකරණයකට එක් වරක් පමණයි. ඔබ දැනටමත් ඇතුළත් කර ඇත.'
+        };
+        
+        // Tamil content
+        const taContent = {
+            title: 'சிங்கள மற்றும் தமிழ் புத்தாண்டு பரிசு',
+            subtitle: 'சிறந்த பரிசுகளை வெல்ல உங்கள் விவரங்களை உள்ளிடவும்!',
+            nameLabel: 'முழு பெயர்:',
+            phoneLabel: 'தொலைபேசி எண்:',
+            submitBtn: 'பதிவை சமர்ப்பிக்கவும்',
+            nameError: 'உங்கள் பெயரை உள்ளிடவும்',
+            phoneError: 'சரியான இலங்கை தொலைபேசி எண்ணை உள்ளிடவும்',
+            successMsg: 'உங்கள் பதிவிற்கு நன்றி! வாழ்த்துக்கள்!',
+            reloadCard: 'மீண்டும் ஏற்றும் அட்டை எண்:',
+            limitMsg: 'ஒரு சாதனம் ஒரு முறை மட்டுமே. நீங்கள் ஏற்கனவே பதிவு செய்துள்ளீர்கள்.'
+        };
+        
+        function setLanguage(content) {
+            document.getElementById('main-title').textContent = content.title;
+            document.getElementById('subtitle').textContent = content.subtitle;
+            document.getElementById('name-label').textContent = content.nameLabel;
+            document.getElementById('phone-label').textContent = content.phoneLabel;
+            document.getElementById('submit-btn').textContent = content.submitBtn;
+            document.getElementById('name-error').textContent = content.nameError;
+            document.getElementById('phone-error').textContent = content.phoneError;
+            
+            // Success and limit messages
+            document.querySelector('#success-message p:first-child').textContent = content.successMsg;
+            document.querySelector('#success-message p:last-child').innerHTML = 
+                content.reloadCard + ' <span class="card-number" id="card-number">' + 
+                document.getElementById('card-number').textContent + '</span>';
+            document.querySelector('#limit-message p').textContent = content.limitMsg;
+        }
+      
+        enBtn.addEventListener('click', function() {
+            setLanguage(enContent);
+            enBtn.classList.add('active');
+            siBtn.classList.remove('active');
+            taBtn.classList.remove('active');
+        });
+        
+        siBtn.addEventListener('click', function() {
+            setLanguage(siContent);
+            siBtn.classList.add('active');
+            enBtn.classList.remove('active');
+            taBtn.classList.remove('active');
+        });
+        
+        taBtn.addEventListener('click', function() {
+            setLanguage(taContent);
+            taBtn.classList.add('active');
+            enBtn.classList.remove('active');
+            siBtn.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
