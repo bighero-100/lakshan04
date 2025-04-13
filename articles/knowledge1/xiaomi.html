@@ -2,11 +2,12 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1024">
   <meta property="og:title" content="ඔබගේ XIAOMI දුරකථනයේ බැටරි ආයු කාලය දීර්ඝ කරන්නේ කෙසේද?">
   <meta property="og:description" content="සන්නිවේදනය, විනෝදාස්වාදය සහ රැකියා කටයුතු වැනි විවිධ අරමුණු සඳහා සේවය කරමින්, ස්මාර්ට්ෆෝන් අපගේ දෛනික ජීවිතයේ වැදගත් කාර්යභාරයක් ඉටු කරයි. කෙසේ වෙතත්, පරිශීලකයින් මුහුණ දෙන පොදු ගැටළුවක් වන්නේ බැටරි ආයු කාලයයි. තාක්ෂණික දියුණුව තිබියදීත්, ස්මාර්ට්ෆෝන් බැටරි ඉක්මනින් බැස යා හැක...">
   <meta property="og:image" content="https://ik.imagekit.io/bcd8ygetu/other4/images_q=tbn:ANd9GcTpEgzxJ7QpT-A3Jz-4932zSbp6QHFSrSQNvw&s?updatedAt=1744482276897">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -306,6 +307,74 @@
         .share-button:hover {
             transform: scale(1.1);
         }
+        
+        /* Heart like button */
+        .engagement-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 30px;
+        }
+        
+        .like-container, .view-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .heart-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            color: #aaa;
+            transition: all 0.3s ease;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .heart-btn.liked {
+            color: #ff4d6d;
+        }
+        
+        .heart-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .heart-btn.anim {
+            animation: heartPulse 0.4s ease;
+        }
+        
+        .like-count, .view-count {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .view-container {
+            color: #0b5394;
+        }
+        
+        .view-icon {
+            color: #0b5394;
+            font-size: 18px;
+        }
   </style>
 </head>
 <body>
@@ -323,6 +392,21 @@
       <img src="https://ik.imagekit.io/bcd8ygetu/other4/nXWakEqepjgNDo4a8LccTG.jpg?updatedAt=1744481552454" alt="Battery Intelligence">
     </div>
     <div class="meta">Lakshan • April 13 at 12:00 AM</div>
+    
+    <!-- New engagement section -->
+    <div class="engagement-container">
+      <div class="like-container">
+        <button class="heart-btn" id="heartBtn">
+          <i class="fa-heart" id="heartIcon"></i>
+        </button>
+        <span class="like-count" id="likeCount">0</span>
+      </div>
+      <div class="view-container">
+        <i class="fas fa-eye view-icon"></i>
+        <span class="view-count" id="viewCount">0</span>
+      </div>
+    </div>
+    
     <div class="content-border">
       <div class="content">
         <ph>කාලයත් සමඟ බැටරි ක්‍රියාකාරිත්වය අඩු විය හැකිය. සරල නීති කිහිපයක් අනුගමනය කිරීමෙන්, ඔබට ඔබේ Xiaomi උපාංගයේ බැටරි ආයු කාලය දීර්ඝ කළ හැකිය. මෙන්න උපාය මාර්ග කිහිපයක්:</ph>
@@ -335,7 +419,7 @@
 		
 		<p>බොහෝ apps පසුබිමේ ක්‍රියාත්මක වන අතර, භාවිතයේ නොමැති විට පවා බැටරි බලය අඩු කරයි.</p>
 		<p>මෙම පියවර අනුගමනය කරන්න:</p>
-		   1 Open it in “Settings” > “Battery & performance”<br>
+		   1 Open it in "Settings" > "Battery & performance"<br>
 		   2 Select Battery saving app<br>
 		   3 Limit background activity of non-essential apps.
 		   
@@ -353,7 +437,7 @@
 		
 		<p>නවතම updates සඳහා පරීක්ෂා කිරීමට:</p>
 
-			1 Go to " Settings” > “About phone” > “System update”<br>
+			1 Go to " Settings" > "About phone" > "System update"<br>
 			2 Download and install the latest update.
 		
 		<p><strong001>5. DISABLING UNNECESSARY FEATURES</strong001>
@@ -396,8 +480,6 @@
 		<div class="image">
 			<img src="https://ik.imagekit.io/bcd8ygetu/other4/Hyperos3-1536x865.jpg?updatedAt=1744481475863" alt="Battery Intelligence">
 		</div>
-		
-		<p>වාර්තාකරු Mark Gurman පවසන්නේ, iOS 18 යාවත්කාලීනය iPhone මෘදුකාංග ඉතිහාසයේ වඩාත්ම වැදගත් යාවත්කාලීනයක් විය හැකි බවයි. මෙම යාවත්කාලීනය RCS පණිවිඩ සහය, වැඩිදියුණු කළ පණිවිඩකරණ විශේෂාංග සහ අලුත්ම කෘත්‍රිම බුද්ධිය විශේෂාංග ඇතුළත් කරනු ඇත.</p>
       </div>
     </div>
 	<div class="footer">
@@ -420,5 +502,67 @@
     
     </div>
   </div>
+
+  <script>
+    // Initialize heart button and view counter
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get elements
+      const heartBtn = document.getElementById('heartBtn');
+      const heartIcon = document.getElementById('heartIcon');
+      const likeCount = document.getElementById('likeCount');
+      const viewCount = document.getElementById('viewCount');
+      
+      // Get stored likes and views from localStorage
+      let likes = localStorage.getItem('xiaomi_article_likes') ? parseInt(localStorage.getItem('xiaomi_article_likes')) : 0;
+      let views = localStorage.getItem('xiaomi_article_views') ? parseInt(localStorage.getItem('xiaomi_article_views')) : 0;
+      let isLiked = localStorage.getItem('xiaomi_article_liked') === 'true';
+      
+      // Set initial values
+      likeCount.textContent = likes;
+      
+      // Handle heart button state
+      if (isLiked) {
+        heartIcon.classList.add('fas');
+        heartBtn.classList.add('liked');
+      } else {
+        heartIcon.classList.add('far');
+      }
+      
+      // Increment view count
+      views++;
+      localStorage.setItem('xiaomi_article_views', views);
+      viewCount.textContent = views;
+      
+      // Heart button click handler
+      heartBtn.addEventListener('click', function() {
+        heartBtn.classList.add('anim');
+        
+        // Toggle like status
+        if (!isLiked) {
+          heartIcon.classList.remove('far');
+          heartIcon.classList.add('fas');
+          heartBtn.classList.add('liked');
+          likes++;
+          isLiked = true;
+        } else {
+          heartIcon.classList.remove('fas');
+          heartIcon.classList.add('far');
+          heartBtn.classList.remove('liked');
+          likes--;
+          isLiked = false;
+        }
+        
+        // Update UI and localStorage
+        likeCount.textContent = likes;
+        localStorage.setItem('xiaomi_article_likes', likes);
+        localStorage.setItem('xiaomi_article_liked', isLiked);
+        
+        // Remove animation class after animation completes
+        setTimeout(function() {
+          heartBtn.classList.remove('anim');
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>
